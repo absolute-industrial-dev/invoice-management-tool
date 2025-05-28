@@ -6,6 +6,8 @@ import { useAuth } from "./hooks/useAuth";
 export default function App() {
   const { user, loading } = useAuth();
 
+  if (loading) return <p>Loading...</p>;
+
   return (
     <Routes>
       <Route path="/" element={user ? <Navigate to="/main" /> : <Login />} />
