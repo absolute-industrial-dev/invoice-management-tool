@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { invoke } from "@tauri-apps/api/core";
 import "./Login.css";
 
 export default function Login() {
@@ -23,7 +22,7 @@ export default function Login() {
 
   return (
     <main className="container">
-      <p>hello, login now below pls</p>
+      <p>Login</p>
       <form onSubmit={handleLogin}>
         <label htmlFor="email">Email:</label>
         <input type="text" onChange={(e) => setEmail(e.target.value)} />
