@@ -5,6 +5,7 @@ import "./Login.css";
 import aisiLogo from "../../assets/pictures/aisi-logo.png";
 import { motion } from "framer-motion";
 import ThemeToggle from "../../components/themetoggle/Theme";
+import ParticleBackground from "../../components/particles/Particles";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function Login() {
   return (
     <main className="container">
       {/* Logo animation: center fade-in, then move to top */}
-
+      
       <ThemeToggle/>
       <motion.img
         src={aisiLogo}
@@ -69,7 +70,7 @@ export default function Login() {
           <button type="submit">Log in</button>
         </div>
       </motion.form>
-
+      <ParticleBackground/>
     </main>
   );
 }
