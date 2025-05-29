@@ -9,7 +9,7 @@
 
 form {
   padding: 10px;
-  display: flex;
+  display: block;
   flex-direction: column;
   color: black;
   align-items: center;
@@ -18,7 +18,9 @@ form {
   background: #e0e0e0;
   box-shadow:  28px 28px 55px #949494,
               -28px -28px 55px #ffffff;
-  width: 25%;
+  width: 20em;
+  height: auto; 
+  display: flex;
 }
 
 .field-container{
