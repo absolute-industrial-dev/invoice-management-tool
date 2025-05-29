@@ -1,0 +1,8 @@
+.searchbarcontainertest {
+  display: flex;
+}
+
+.searchbartest {
+  color: black;
+  background-color: white;
+}
