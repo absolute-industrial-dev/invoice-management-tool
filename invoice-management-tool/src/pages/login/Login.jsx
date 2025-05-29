@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import "./Login.css";
+import aisiLogo from '../../assets/pictures/aisi-logo.png';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -22,15 +23,23 @@ export default function Login() {
 
   return (
     <main className="container">
-      <p>Login</p>
-      <form onSubmit={handleLogin}>
-        <label htmlFor="email">Email:</label>
-        <input type="text" onChange={(e) => setEmail(e.target.value)} />
+      <img src={aisiLogo} alt="AISI Logo" className="logo" />
+      <form onSubmit={handleLogin} className="form">
+        <div className="field-container">
+  
+          <h1>Login</h1>
+          <div className="fields">
+            <label htmlFor="email">Email:</label>
+            <input type="text" onChange={(e) => setEmail(e.target.value)} />
+          </div>
 
-        <label htmlFor="password">Password:</label>
-        <input type="password" onChange={(e) => setPassword(e.target.value)} />
+          <div className="fields">
+            <label htmlFor="password">Password:</label>
+            <input type="password" onChange={(e) => setPassword(e.target.value)} />
+          </div>
 
-        <button type="submit">Log in</button>
+          <button type="submit">Log in</button>
+        </div>
       </form>
     </main>
   );
