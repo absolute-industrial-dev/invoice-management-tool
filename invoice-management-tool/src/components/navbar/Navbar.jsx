@@ -1,29 +1,56 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import "./Navbar.css";
+import mainLogo from "../../assets/pictures/absolute-logo.png";
+import { FiLogOut } from "react-icons/fi";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-    } catch (err) {
-      console.error("Logout failed:", err.message || err);
-    }
+  const handleLogout = () => {
+    logout();
   };
 
   return (
-    <nav>
-      <div>Logo</div>
+    <nav className="nav-container">
       <div>
-        <Link to="/main">Home</Link>
+        <img src={mainLogo} alt="logo" className="logo-container" />
       </div>
-      <div>
+      <div className="email-container">
+        {user ? <span>{user.email}</span> : <span></span>}
+      </div>
+      <div className="home-wrapper">
+        <button to="/main" className="home-container">
+          Home
+          <div className="inner-button">
+            <svg
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {" "}
+                <path
+                  d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z"
+                  fill="#ffffff"
+                ></path>{" "}
+              </g>
+            </svg>
+          </div>
+        </button>
+      </div>
+      <div className="logout-container">
         {user ? (
           <>
-            <span>{user.email}</span>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={logout} className="logout-button">
+              <FiLogOut size={23} />
+            </button>
           </>
         ) : (
           <Link to="/">Login</Link>
