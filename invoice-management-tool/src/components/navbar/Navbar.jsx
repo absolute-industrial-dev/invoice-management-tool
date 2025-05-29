@@ -50,6 +50,7 @@ export default function Navbar() {
           <>
             <button onClick={logout} className="logout-button">
               <FiLogOut size={23} />
+              <span>Log out</span>
             </button>
           </>
         ) : (

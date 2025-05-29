@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: #e0e0e0;
-  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow:  10px 10px 12px #c7c7c7,
+              -10px -10px 12px #ffffff;
   height: 80px;
   gap: 10px;
   padding: 0 10px;
@@ -104,25 +105,47 @@
 }
 .logout-container {
   align-items: center;
-  width: auto;
+  width: fit-content;
   margin: 20px;
   margin-left: auto;
 }
+
 .logout-button {
-  width: 40px;
-  height: 50px;
+  display: flex;
+  width: fit-content;
   align-items: center;
-  border-radius: 10px;
+  justify-content: center;
   color: #ffffff;
-  padding: 0.7em;
-  border-radius: 0.5em;
-  background: #c73232;
   cursor: pointer;
-  border: 1px solid #c73232;
   transition: all 0.3s;
-  box-shadow: 2px 2px 2px #c73232, -2px -2px 12px #c73232;
+  background-color: #af3030;
 }
-.logout-btn:active {
-  color: #af3030;
-  box-shadow: inset 4px 4px 12px #af3030, inset -4px -4px 12px #af3030;
+
+.logout-button:active {
+  background: #c73232;
+  box-shadow: inset 5px 5px 10px #641919,
+              inset -5px -5px 10px #ff4b4b;
 }
+
+.logout-button:hover {
+  background-color: #af3030;
+}
+
+html.dark .logout-button {
+  background-color: #5c1d1d;
+  color: #ffffff;
+  box-shadow: 5px 5px 10px #1a0a0a, 
+              -5px -5px 10px #7a2a2a;
+  transition: all 0.3s ease;
+}
+
+html.dark .logout-button:hover {
+  background-color: #712222;
+}
+
+html.dark .logout-button:active {
+  background-color: #992828;
+  box-shadow: inset 5px 5px 10px #3a1212,
+              inset -5px -5px 10px #c74444;
+}
+

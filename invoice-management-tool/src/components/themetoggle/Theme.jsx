@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 import './ThemeToggle.css';
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ className = '' }) {
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function ThemeToggle() {
   }, [isDarkMode]);
 
   return (
-    <div className="theme-toggle">
+     <div className={`theme-toggle ${className}`}>
       <motion.button
         onClick={() => setIsDarkMode(!isDarkMode)}
         className={`theme-toggle-button ${isDarkMode ? 'dark' : ''}`}

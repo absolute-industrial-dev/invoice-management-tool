@@ -74,16 +74,20 @@ input:focus{
               inset -5px -5px 10px #ffffff;
 }
 
+.nav-container {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow:  10px 10px 12px #c7c7c7,
+              -10px -10px 12px #ffffff;
+}
+
 html.dark form {
   color: white;
-  border-radius: 23px;
   background: linear-gradient(145deg, #111111, #0e0e0e);
   box-shadow:  7px 7px 18px #060606,
               -7px -7px 18px #1a1a1a;
 }
 
 html.dark input{
-  border-radius: 23px;
   background: #101010;
   box-shadow:  8px 8px 16px #090909,
   -8px -8px 16px #171717;
@@ -96,18 +100,10 @@ html.dark input:focus{
 }
 
 html.dark button {
-  margin: 20px;
-  padding: 14px 28px;
-  border: none;
-  border-radius: 23px;
   background: #101010;
   box-shadow:  5px 5px 10px #060606,
               -5px -5px 10px #1a1a1a;
-  font-size: 1em;
-  font-weight: 600;
   color: white;
-  cursor: pointer;
-  transition: all 0.25s ease;
 }
 
 
@@ -120,6 +116,16 @@ html.dark button:active {
   background: #181818;
   box-shadow: inset 5px 5px 10px #0a0a0a,
               inset -5px -5px 10px #222222;
+}
+
+html.dark .nav-container {
+  background: linear-gradient(145deg, #101010, #070707);
+  box-shadow:  10px 10px 12px #0a0a0a,
+              -10px -10px 12px #222222;
+}
+
+html.dark .logout-button{
+  
 }
 
 /* Dark mode using html.dark */
@@ -139,4 +145,5 @@ html.dark input {
 
 html, body, form, input, button {
   transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+  margin: 0;
 }
