@@ -1,11 +1,15 @@
 import Navbar from "../../components/navbar/Navbar";
-import Searchbar from "../../components/searchbar/Searchbar";
+import Table from "../../components/table/Table";
 
 export default function Main() {
   return (
-    <header>
-      <Navbar />
-      <Searchbar />
-    </header>
+    <div>
+      <header>
+        <Navbar />
+      </header>
+      <body>
+        <Table />
+      </body>
+    </div>
   );
 }
