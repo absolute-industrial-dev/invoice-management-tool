@@ -1,0 +1,9 @@
+.contain {
+  display: flex;
+}
+
+.test {
+  color: black;
+  background-color: white;
+  width: fit-content;
+}
