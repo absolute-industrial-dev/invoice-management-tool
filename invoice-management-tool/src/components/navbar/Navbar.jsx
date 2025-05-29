@@ -5,6 +5,10 @@ import "./Navbar.css";
 export default function Navbar() {
   const { user, logout } = useAuth();
 
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <nav>
       <div>Logo</div>
@@ -24,29 +28,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-/* import { useAuth } from "../../hooks/useAuth";
-import "./Navbar.css";
-
-export default function Navbar() {
-  const { logout } = useAuth();
-
-  const handleLogout = () => {
-    logout();
-  };
-
-  return (
-    <div class="header">
-      <div class="logo">Company Title</div>
-      <div class="menu">
-        <a href="#" class="link">
-          <div class="title" onClick={handleLogout}>
-            Logout
-          </div>
-          <div class="bar"></div>
-        </a>
-      </div>
-    </div>
-  );
-}
- */
