@@ -5,8 +5,12 @@ import "./Navbar.css";
 export default function Navbar() {
   const { user, logout } = useAuth();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (err) {
+      console.error("Logout failed:", err.message || err);
+    }
   };
 
   return (
@@ -19,7 +23,7 @@ export default function Navbar() {
         {user ? (
           <>
             <span>{user.email}</span>
-            <button onClick={logout}>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
           </>
         ) : (
           <Link to="/">Login</Link>

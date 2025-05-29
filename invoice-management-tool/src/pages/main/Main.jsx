@@ -7,9 +7,9 @@ export default function Main() {
       <header>
         <Navbar />
       </header>
-      <body>
+      <main>
         <Table />
-      </body>
+      </main>
     </div>
   );
 }

@@ -6,19 +6,20 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const session = supabase.auth
-      .getSession()
-      .then(({ data }) => setUser(data.session?.user ?? null));
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
 
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
-        setLoading(false);
-      }
-    );
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
 
-    return () => listener.subscription.unsubscribe();
-  });
+    return () => subscription.unsubscribe();
+  }, []);
 
   const login = async (email, password) => {
     const { error } = await supabase.auth.signInWithPassword({
