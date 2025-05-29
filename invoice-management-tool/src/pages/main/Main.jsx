@@ -1,20 +1,11 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
-import { invoke } from "@tauri-apps/api/core";
+import Navbar from "../../components/navbar/Navbar";
+import Searchbar from "../../components/searchbar/Searchbar";
 
 export default function Main() {
-  const navigate = useNavigate();
-  const { logout } = useAuth();
-
-  const handleLogout = () => {
-    logout();
-  };
-
   return (
-    <main>
-      <p>LOGOUT NOW</p>
-      <button onClick={handleLogout}>Logout</button>
-    </main>
+    <header>
+      <Navbar />
+      <Searchbar />
+    </header>
   );
 }
