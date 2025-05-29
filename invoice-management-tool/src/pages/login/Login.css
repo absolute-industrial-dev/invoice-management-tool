@@ -1,7 +1,6 @@
 .container{
   align-items: center;
   justify-content: center;
-  background-color: #e0e0e0;
   display: flex;
   height: 100vh;
   flex-direction: column;
@@ -11,13 +10,8 @@ form {
   padding: 10px;
   display: block;
   flex-direction: column;
-  color: black;
   align-items: center;
   justify-content: center;
-  border-radius: 23px;
-  background: #e0e0e0;
-  box-shadow:  28px 28px 55px #949494,
-              -28px -28px 55px #ffffff;
   width: 20em;
   height: auto; 
   display: flex;
@@ -36,44 +30,6 @@ form {
   width: fit-content;
   align-items: center;
   justify-content: center;
-  border-radius: 23px;
-  background: #e0e0e0;
-  box-shadow:  8px 8px 16px #acacac,
-  -8px -8px 16px #ffffff;
-}
-
-.fields input:focus{
-  background: #e0e0e0;
-  box-shadow: inset 5px 5px 10px #9f9f9f,
-              inset -5px -5px 10px #ffffff;
-}
-
-.form button {
-  margin: 20px;
-  padding: 14px 28px;
-  border: none;
-  border-radius: 23px;
-  background: #e0e0e0;
-  box-shadow:  5px 5px 10px #9f9f9f,
-              -5px -5px 10px #ffffff;
-  font-size: 1em;
-  font-weight: 600;
-  color: #2c2c2c;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-/* Hover: slightly reduce shadows to imply elevation */
-.form button:hover {
-  box-shadow: 8px 8px 16px #c7c7c7,
-              -8px -8px 16px #f9f9f9;
-}
-
-/* Active: inset shadows for pressed effect */
-.form button:active {
-  background: #e0e0e0;
-  box-shadow: inset 5px 5px 10px #9f9f9f,
-              inset -5px -5px 10px #ffffff;
 }
 
 
@@ -82,6 +38,7 @@ form {
   will-change: filter;
   transition: 0.75s;
   padding: 1em;
+  z-index: 9999;
 }
 
 .logo.vite:hover {

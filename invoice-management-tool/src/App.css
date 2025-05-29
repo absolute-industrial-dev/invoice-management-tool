@@ -1,4 +1,4 @@
-/* Light mode (default) */
+/* Base (light mode) remains unchanged */
 :root {
   font-family: "Arial", sans-serif;
   font-size: 16px;
@@ -15,31 +15,12 @@
   -webkit-text-size-adjust: 100%;
 }
 
-/* Dark mode overrides */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #f6f6f6;
-    background-color: #2f2f2f;
-  }
-
-  a:hover {
-    color: #24c8db;
-  }
-
-  input {
-    color: #ffffff;
-    background-color: #0f0f0f98;
-  }
-}
-
-/* Shared global styles */
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+form {
+  color: black;
+  border-radius: 23px;
+  background: #e0e0e0;
+  box-shadow:  28px 28px 55px #949494,
+              -28px -28px 55px #ffffff;
 }
 
 input {
@@ -54,4 +35,108 @@ input {
   transition: border-color 0.25s;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   outline: none;
+  border-radius: 23px;
+  background: #e0e0e0;
+  box-shadow:  8px 8px 16px #acacac,
+  -8px -8px 16px #ffffff;
+  margin-top: 5px;
+}
+
+button {
+  margin: 20px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 23px;
+  background: #e0e0e0;
+  box-shadow:  5px 5px 10px #9f9f9f,
+              -5px -5px 10px #ffffff;
+  font-size: 1em;
+  font-weight: 600;
+  color: #2c2c2c;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  box-shadow: 8px 8px 16px #c7c7c7,
+              -8px -8px 16px #f9f9f9;
+}
+
+button:active {
+  background: #e0e0e0;
+  box-shadow: inset 5px 5px 10px #9f9f9f,
+              inset -5px -5px 10px #ffffff;
+}
+
+input:focus{
+  background: #e0e0e0;
+  box-shadow: inset 5px 5px 10px #9f9f9f,
+              inset -5px -5px 10px #ffffff;
+}
+
+html.dark form {
+  color: white;
+  border-radius: 23px;
+  background: linear-gradient(145deg, #111111, #0e0e0e);
+  box-shadow:  7px 7px 18px #060606,
+              -7px -7px 18px #1a1a1a;
+}
+
+html.dark input{
+  border-radius: 23px;
+  background: #101010;
+  box-shadow:  8px 8px 16px #090909,
+  -8px -8px 16px #171717;
+}
+
+html.dark input:focus{
+  background: #101010;
+  box-shadow: inset 5px 5px 10px #090909,
+              inset -5px -5px 10px #171717;
+}
+
+html.dark button {
+  margin: 20px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 23px;
+  background: #101010;
+  box-shadow:  5px 5px 10px #060606,
+              -5px -5px 10px #1a1a1a;
+  font-size: 1em;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+
+html.dark button:hover {
+  box-shadow: 8px 8px 16px #0c0c0c,
+              -8px -8px 16px #1e1e1e;
+}
+
+html.dark button:active {
+  background: #181818;
+  box-shadow: inset 5px 5px 10px #0a0a0a,
+              inset -5px -5px 10px #222222;
+}
+
+/* Dark mode using html.dark */
+html.dark {
+  color: #101010;
+  background-color: #101010;
+}
+
+html.dark a:hover {
+  color: #24c8db;
+}
+
+html.dark input {
+  color: #ffffff;
+  background-color: #0f0f0f98;
+}
+
+html, body, form, input, button {
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
