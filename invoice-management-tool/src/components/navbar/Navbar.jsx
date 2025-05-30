@@ -13,11 +13,19 @@ export default function Navbar() {
 
   return (
     <nav className="nav-container">
-      <div>
-        <img src={mainLogo} alt="logo" className="logo-container" />
-      </div>
-      <div className="email-container">
-        {user ? <span>{user.email}</span> : <span></span>}
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        ></meta>
+      </head>
+      <div className="icon-email-container">
+        <div className="logo-container">
+          <img src={mainLogo} alt="logo" className="logo-icon" />
+        </div>
+        <div className="email-container">
+          {user ? <span>{user.email}</span> : <span></span>}
+        </div>
       </div>
       <div className="home-wrapper">
         <button to="/main" className="home-container">
@@ -25,21 +33,19 @@ export default function Navbar() {
           <div className="inner-button">
             <svg
               viewBox="0 0 16 16"
-              fill="none"
+              fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
+              className=""
             >
-              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g
                 id="SVGRepo_tracerCarrier"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               ></g>
               <g id="SVGRepo_iconCarrier">
                 {" "}
-                <path
-                  d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z"
-                  fill="#ffffff"
-                ></path>{" "}
+                <path d="M1 6V15H6V11C6 9.89543 6.89543 9 8 9C9.10457 9 10 9.89543 10 11V15H15V6L8 0L1 6Z"></path>{" "}
               </g>
             </svg>
           </div>
@@ -60,3 +66,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
