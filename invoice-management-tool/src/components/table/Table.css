@@ -1,9 +1,9 @@
-.contain {
-  display: flex;
+.main-container{
+  margin: 3em;
 }
 
-.test {
-  color: black;
-  background-color: white;
-  width: fit-content;
+.contain {
+  display: flex;
+  gap: 2em;
 }
+

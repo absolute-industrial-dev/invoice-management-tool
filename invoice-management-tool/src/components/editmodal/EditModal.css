@@ -1,0 +1,170 @@
+/* Modal backdrop */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+select{
+    padding: 0.6em 1.2em;
+}
+
+.check-container{
+    display: flex;
+    padding: 0.3em 1.2em !important;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+    background: none;
+    box-shadow: none;
+    padding-left: 0;
+}
+
+.modal-container .form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-container label.full-width,
+.modal-container .form-buttons {
+  grid-column: span 2;
+}
+
+.modal-container {
+  background: #eeeeee;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow: hidden; /* Keeps the radius intact */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+
+.modal-scroll-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2rem;
+  flex-grow: 1;
+  max-height: 90vh; /* Or adjust as needed */
+  box-sizing: border-box;
+}
+
+/* Modal heading */
+.modal-container h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.modal-container label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.modal-container textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+button{
+    gap: 0 !important;
+    margin: 0px !important;
+}
+
+button[type="submit"]{
+    background-color: #45ad22;
+    color: #fafafa;
+}
+
+button[type="submit"]:active {
+  background: #45ad22;
+  box-shadow: inset 5px 5px 10px #2b6b15,
+              inset -5px -5px 10px #77e054;
+}
+
+button[type="submit"]:hover {
+  background-color: #35811b;
+}
+
+button[type="cancel"]{
+    background-color: #af3030;
+    color: #fafafa;
+}
+
+button[type="cancel"]:active {
+  background: #c73232;
+  box-shadow: inset 5px 5px 10px #641919,
+              inset -5px -5px 10px #ff4b4b;
+}
+
+button[type="cancel"]:hover {
+background-color: #af3030;
+}
+
+
+
+/* Dark mode support */
+html.dark .modal-container {
+  background: #1e1e1e;
+  box-shadow: none;
+  color: #f0f0f0;
+}
+
+html.dark form{
+    background: none;
+    box-shadow: none;
+}
+
+html.dark button[type="submit"] {
+  background-color: #2e7d19;
+  color: #fafafa;
+  box-shadow: 5px 5px 10px #1b4910,
+              -5px -5px 10px #3fae24;
+}
+
+html.dark button[type="submit"]:hover {
+  background-color: #256517;
+}
+
+html.dark button[type="submit"]:active {
+  background: #2e7d19;
+  box-shadow: inset 5px 5px 10px #1c4e10,
+              inset -5px -5px 10px #4dde28;
+}
+
+html.dark button[type="cancel"] {
+  background-color: #8c2a2a;
+  color: #fafafa;
+  box-shadow: 5px 5px 10px #4a1414,
+              -5px -5px 10px #c83e3e;
+}
+
+html.dark button[type="cancel"]:hover {
+  background-color: #7a2424;
+}
+
+html.dark button[type="cancel"]:active {
+  background: #a82e2e;
+  box-shadow: inset 5px 5px 10px #531919,
+              inset -5px -5px 10px #e24c4c;
+}
