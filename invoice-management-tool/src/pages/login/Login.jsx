@@ -6,6 +6,7 @@ import aisiLogo from "../../assets/pictures/aisi-logo.png";
 import { motion } from "framer-motion";
 import ThemeToggle from "../../components/themetoggle/Theme";
 import ParticleBackground from "../../components/particles/Particles";
+import { EnvelopeIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ export default function Login() {
         <div className="field-container">
           <h1>Login</h1>
           <div className="fields">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email"><EnvelopeIcon className="icon" />Email:</label>
             <input
               type="text"
               onChange={(e) => setEmail(e.target.value)}
@@ -60,7 +61,7 @@ export default function Login() {
           </div>
 
           <div className="fields">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password"><LockClosedIcon className="icon"/>Password:</label>
             <input
               type="password"
               onChange={(e) => setPassword(e.target.value)}

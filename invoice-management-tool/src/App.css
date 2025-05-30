@@ -106,7 +106,6 @@ html.dark button {
   color: white;
 }
 
-
 html.dark button:hover {
   box-shadow: 8px 8px 16px #0c0c0c,
               -8px -8px 16px #1e1e1e;
@@ -124,7 +123,6 @@ html.dark .nav-container {
               -10px -10px 12px #222222;
 }
 
-/* Dark mode using html.dark */
 html.dark {
   color: #101010;
   background-color: #101010;
