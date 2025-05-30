@@ -1,5 +1,5 @@
 .main-container{
-  margin: 2em;
+  margin: 3em;
 }
 
 .contain {
@@ -9,4 +9,73 @@
 
 table{
   margin-top: 2em;
+}
+
+table {
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: #f6f6f64f;
+  font-family: 'Segoe UI', sans-serif;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 1rem 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #45ad22;
+}
+
+select{
+  border: none;
+  border-radius: 23px;
+  padding: 14px;
+  background: #e0e0e0;
+  box-shadow:  5px 5px 10px #9f9f9f,
+              -5px -5px 10px #ffffff;
+  font-size: 1em;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+select:hover{
+  background: #e0e0e0;
+  box-shadow: inset 5px 5px 10px #9f9f9f,
+              inset -5px -5px 10px #ffffff;
+}
+
+option{
+  background: #f6f6f6;
+}
+
+html.dark table{
+  background: #1c1c1c7e;
+  box-shadow:  12px 12px 24px #0f0f0f,
+              -12px -12px 24px #292929;
+  color: #e0e0e0;
+}
+
+html.dark select{
+  background: #1c1c1c;
+  box-shadow:  5px 5px 10px #0f0f0f,
+              -5px -5px 10px #292929;
+  color: #f6f6f6;
+}
+
+html.dark select:hover{
+  background: #181818;
+  box-shadow: inset 5px 5px 10px #0a0a0a,
+              inset -5px -5px 10px #222222;
+}
+
+html.dark option{
+  color: #101010;
 }
