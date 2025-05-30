@@ -1,9 +1,12 @@
-.contain {
-  display: flex;
+.main-container{
+  margin: 2em;
 }
 
-.test {
-  color: black;
-  background-color: white;
-  width: fit-content;
+.contain {
+  display: flex;
+  gap: 2em;
+}
+
+table{
+  margin-top: 2em;
 }

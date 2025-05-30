@@ -4,9 +4,9 @@ import "./Table.css";
 
 export default function Table() {
   return (
-    <div>
+    <div className="main-container">
       <div className="contain">
-        <Searchbar />
+        <Searchbar className="searchb" />
         <Searchby />
       </div>
       <table>

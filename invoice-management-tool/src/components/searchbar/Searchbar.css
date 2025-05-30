@@ -1,8 +1,38 @@
-.searchbarcontainertest {
+.searchbar {
+  position: relative;
   display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  background: #e0e0e0;
+  box-shadow: 8px 8px 16px #bebebe,
+              -8px -8px 16px #ffffff;
 }
 
-.searchbartest {
-  color: black;
-  background-color: white;
+.search-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.75rem;
+  color: #45ad22;
+  pointer-events: none;
 }
+
+/* DARK MODE */   
+html.dark .searchbar {
+  background: #1c1c1c; /* lighter than #101010 */
+  box-shadow: 6px 6px 12px #0f0f0f,
+              -6px -6px 12px #292929; /* softer shadows */
+}
+
+html.dark .searchbar input {
+  color: #eaeaea; 
+  background: #1c1c1c;
+}
+
+.searchbar,
+.searchbar input,
+.searchbar .search-icon {
+  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+

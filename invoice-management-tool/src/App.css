@@ -82,27 +82,27 @@ input:focus{
 
 html.dark form {
   color: white;
-  background: linear-gradient(145deg, #111111, #0e0e0e);
-  box-shadow:  7px 7px 18px #060606,
-              -7px -7px 18px #1a1a1a;
+  background: #1c1c1c;
+  box-shadow:  12px 12px 24px #0f0f0f,
+              -12px -12px 24px #292929;
 }
 
 html.dark input{
-  background: #101010;
-  box-shadow:  8px 8px 16px #090909,
-  -8px -8px 16px #171717;
+  background: #1c1c1c;
+  box-shadow:  8px 8px 16px #0f0f0f,
+  -8px -8px 16px #292929;
 }
 
 html.dark input:focus{
-  background: #101010;
-  box-shadow: inset 5px 5px 10px #090909,
-              inset -5px -5px 10px #171717;
+  background: #1c1c1c;
+  box-shadow: inset 5px 5px 10px #0f0f0f,
+              inset -5px -5px 10px #292929;
 }
 
 html.dark button {
-  background: #101010;
-  box-shadow:  5px 5px 10px #060606,
-              -5px -5px 10px #1a1a1a;
+  background: #1c1c1c;
+  box-shadow:  5px 5px 10px #0f0f0f,
+              -5px -5px 10px #292929;
   color: white;
 }
 
@@ -124,9 +124,10 @@ html.dark .nav-container {
 }
 
 html.dark {
-  color: #101010;
-  background-color: #101010;
+  color: #fafafa;
+  background: linear-gradient(135deg, #2a2a2a, #101010);
 }
+
 
 html.dark a:hover {
   color: #24c8db;

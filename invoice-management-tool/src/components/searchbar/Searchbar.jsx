@@ -1,10 +1,16 @@
+import ParticleBackground from "../particles/Particles";
 import "./Searchbar.css";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
-export default function Searchbar() {
+export default function Searchbar({ className = '' }) {
   return (
-    <div className="searchbarcontainertest">
-      <p>search icon goes here</p>
-      <p className="searchbartest">im search bar</p>
+    <div className={`searchbar ${className}`}>
+      <ParticleBackground/>
+      <MagnifyingGlassIcon className="search-icon" />
+      <input
+        type="text"
+        placeholder="Search..."
+      />
     </div>
   );
 }
