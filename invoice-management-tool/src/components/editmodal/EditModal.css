@@ -24,7 +24,7 @@ select{
     align-items: center;
 }
 
-form{
+.form{
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -130,7 +130,7 @@ html.dark .modal-container {
   color: #f0f0f0;
 }
 
-html.dark form{
+html.dark .form{
     background: none;
     box-shadow: none;
 }
