@@ -47,7 +47,7 @@ export default function EditModal({
       <div className="modal-container">
         <h2>Edit Invoice</h2>
         <div className="modal-scroll-content">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="form">
           <label>
             Status:
             <select
