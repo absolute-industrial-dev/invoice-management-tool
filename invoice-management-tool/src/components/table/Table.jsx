@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Searchbar from "../searchbar/Searchbar";
 import Searchby from "../searchby/Searchby";
 import "./Table.css";
 import { fetchInvoices, updateInvoiceStatus } from "../../lib/invoiceService";
+import EditModal from "../editmodal/EditModal";
 
 export default function Table() {
   const [invoices, setInvoices] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedInvoice, setSelectedInvoice] = useState(null);
 
   const headers = [
     "PO Number",
@@ -21,6 +24,15 @@ export default function Table() {
   ];
   const statuses = ["Sales Log", "Collectibles", "Last File"];
 
+  useEffect(() => {
+    const loadInvoices = async () => {
+      const data = await fetchInvoices();
+      setInvoices(data);
+    };
+
+    loadInvoices();
+  }, []);
+
   const handleStatusChange = async (invoiceId, newStatus) => {
     const success = await updateInvoiceStatus(invoiceId, newStatus);
     if (success) {
@@ -32,18 +44,23 @@ export default function Table() {
     }
   };
 
-  const openEditComponent = async () => {
-    alert("Opened Edit component.");
+  const openEditModal = (invoice) => {
+    setSelectedInvoice(invoice);
+    setIsModalOpen(true);
   };
 
-  useEffect(() => {
-    const loadInvoices = async () => {
-      const data = await fetchInvoices();
-      setInvoices(data);
-    };
+  const handleCloseModal = () => {
+    setSelectedInvoice(null);
+    setIsModalOpen(false);
+  };
 
-    loadInvoices();
-  }, []);
+  const handleSaveInvoice = (updatedInvoice) => {
+    setInvoices((prev) =>
+      prev.map((invoice) =>
+        invoice.id === updatedInvoice.id ? updatedInvoice : invoice
+      )
+    );
+  };
 
   return (
     <div className="main-container">
@@ -94,12 +111,21 @@ export default function Table() {
                 </select>
               </td>
               <td>
-                <button onClick={openEditComponent}>Edit</button>
+                <button onClick={() => openEditModal(invoice)}>Edit</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {isModalOpen && (
+        <EditModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          invoiceData={selectedInvoice}
+          onSave={handleSaveInvoice}
+          statuses={statuses}
+        />
+      )}
     </div>
   );
 }
