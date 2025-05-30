@@ -21,10 +21,25 @@ export async function updateInvoiceStatus(invoiceId, newStatus) {
     .update({ status: newStatus })
     .eq("id", invoiceId);
 
-    if (error) {
-        console.error("Error updating status: ", error)
-        return false;
-    }
+  if (error) {
+    console.error("Error updating status: ", error);
+    return false;
+  }
 
-    return true;
+  return true;
+}
+
+export async function updateInvoiceData(invoiceId, updatedInvoice) {
+  const { error } = await supabase
+    .schema("finance")
+    .from("invoices")
+    .update(updatedInvoice)
+    .eq("id", invoiceId);
+
+  if (error) {
+    console.error("Error updating invoice data: ", error);
+    return false;
+  }
+
+  return true;
 }

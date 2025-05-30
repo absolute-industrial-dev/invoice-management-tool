@@ -1,8 +1,12 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Searchbar from "../searchbar/Searchbar";
 import Searchby from "../searchby/Searchby";
 import "./Table.css";
-import { fetchInvoices, updateInvoiceStatus } from "../../lib/invoiceService";
+import {
+  fetchInvoices,
+  updateInvoiceStatus,
+  updateInvoiceData,
+} from "../../lib/invoiceService";
 import EditModal from "../editmodal/EditModal";
 
 export default function Table() {
@@ -54,12 +58,16 @@ export default function Table() {
     setIsModalOpen(false);
   };
 
-  const handleSaveInvoice = (updatedInvoice) => {
-    setInvoices((prev) =>
-      prev.map((invoice) =>
-        invoice.id === updatedInvoice.id ? updatedInvoice : invoice
-      )
-    );
+  const handleSaveInvoice = async (updatedInvoice) => {
+    const success = await updateInvoiceData(updatedInvoice.id, updatedInvoice);
+    if (success) {
+      setInvoices((prev) =>
+        prev.map((invoice) =>
+          invoice.id === updatedInvoice.id ? updatedInvoice : invoice
+        )
+      );
+      handleCloseModal();
+    }
   };
 
   return (

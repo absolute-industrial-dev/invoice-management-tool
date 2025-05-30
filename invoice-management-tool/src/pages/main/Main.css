@@ -6,4 +6,26 @@
 
 .mode{
   margin-top: 5%; 
+  margin-left: 5%;
+}
+
+@media (max-width: 1200px) {
+  .mode {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 500px) {
+  .mode {
+    margin-top: auto;
+  }
+}
+
+@media (max-width: 350px) {
+  .mode {
+    margin-top: auto;
+    margin-left: auto;
+    width: flex;
+    height: flex;
+  }
 }
