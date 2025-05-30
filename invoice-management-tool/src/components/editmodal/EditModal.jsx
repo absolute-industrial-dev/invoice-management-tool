@@ -28,6 +28,18 @@ export default function EditModal({
     onSave(formState);
   };
 
+  /* const formattedDate = new Date(formState.date_collected)
+    .toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "2-digit",
+    })
+    .replace(/\s/g, "-"); */
+
+  const inputDate = formState.date_collected
+    ? new Date(formState.date_collected).toISOString().split("T")[0]
+    : "";
+
   if (!isOpen) return null;
 
   return (
@@ -105,7 +117,7 @@ export default function EditModal({
             <input
               type="date"
               name="date_collected"
-              value={formState.date_collected || ""}
+              value={inputDate}
               onChange={handleChange}
             />
           </label>
