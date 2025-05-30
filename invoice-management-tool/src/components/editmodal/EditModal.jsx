@@ -31,10 +31,11 @@ export default function EditModal({
   if (!isOpen) return null;
 
   return (
-    <div>
-      <div>
+    <div className="modal-overlay">
+      <div className="modal-container">
         <h2>Edit Invoice</h2>
-        <form onSubmit={handleSubmit}>
+        <div className="modal-scroll-content">
+          <form onSubmit={handleSubmit}>
           <label>
             Status:
             <select
@@ -161,7 +162,8 @@ export default function EditModal({
 
           <label>
             Is Service?
-            <input
+            <div className="check-container">
+              <input
               type="checkbox"
               name="is_service"
               checked={!!formState.is_service}
@@ -172,6 +174,7 @@ export default function EditModal({
                 }))
               }
             />
+            </div>
           </label>
 
           <label>
@@ -219,13 +222,16 @@ export default function EditModal({
             />
           </label>
 
-          <div>
+          <div className="form-buttons">
             <button type="submit">Save</button>
-            <button type="button" onClick={onClose}>
+            <button type="cancel" onClick={onClose}>
               Cancel
             </button>
           </div>
         </form>
+        </div>
+        
+        
       </div>
     </div>
   );
