@@ -1,11 +1,20 @@
 import { supabase } from "./supabase";
 
-export async function fetchInvoices(currentPage, searchQuery, searchBy) {
+export async function fetchInvoices(
+  currentPage,
+  searchQuery,
+  searchBy,
+  columnOrder = true
+) {
   const from = (currentPage - 1) * 5;
   const to = from + 5;
   const column = searchBy.toLowerCase().split(" ").join("_");
 
-  let query = supabase.from("invoices").select("*").order(column);
+  let query = supabase.from("invoices").select("*");
+
+  if (column) {
+    query = query.order(column, { ascending: columnOrder });
+  }
 
   if (searchQuery) {
     const numericColumns = [

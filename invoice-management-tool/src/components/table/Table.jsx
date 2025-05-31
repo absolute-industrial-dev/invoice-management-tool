@@ -17,6 +17,7 @@ export default function Table() {
   const [searchBy, setSearchBy] = useState("PO Number");
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
+  const [columnOrder, setColumnOrder] = useState(true);
 
   const headers = [
     "PO Number",
@@ -44,13 +45,18 @@ export default function Table() {
 
   useEffect(() => {
     const loadInvoices = async () => {
-      const result = await fetchInvoices(currentPage, searchQuery, searchBy);
+      const result = await fetchInvoices(
+        currentPage,
+        searchQuery,
+        searchBy,
+        columnOrder
+      );
       setInvoices(result.data);
       setHasMore(result.hasMore);
     };
 
     loadInvoices();
-  }, [currentPage, searchQuery, searchBy]);
+  }, [currentPage, searchQuery, searchBy, columnOrder]);
 
   const handleStatusChange = async (invoiceId, newStatus) => {
     const success = await updateInvoiceStatus(invoiceId, newStatus);
@@ -97,6 +103,15 @@ export default function Table() {
     }
   };
 
+  const handleColumnOrder = (newColumnOrder) => {
+    if (newColumnOrder === searchBy) {
+      setColumnOrder((previousOrder) => !previousOrder);
+    } else {
+      setSearchBy(newColumnOrder);
+      setColumnOrder(true);
+    }
+  };
+
   return (
     <div className="main-container">
       <div className="contain">
@@ -110,6 +125,10 @@ export default function Table() {
           searchBy={searchBy}
           setSearchBy={setSearchBy}
         />
+        <button onClick={() => handleColumnOrder(searchBy)}>
+          {" "}
+          Set Order: {columnOrder ? "Ascending" : "Descending"}
+        </button>
         <button onClick={previousPage} disabled={currentPage === 1}>
           Previous Page
         </button>
