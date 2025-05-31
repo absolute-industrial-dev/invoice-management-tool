@@ -109,14 +109,17 @@ export default function Table() {
           searchByFilters={searchByFilters}
           searchBy={searchBy}
           setSearchBy={setSearchBy}
+          className="searchby"
         />
-        <button onClick={previousPage} disabled={currentPage === 1}>
+        <div className="pagination">
+          <button onClick={previousPage} disabled={currentPage === 1}>
           Previous Page
-        </button>
-        <span>{currentPage}</span>
-        <button onClick={nextPage} disabled={!hasMore}>
-          Next Page
-        </button>
+          </button>
+          <span className="page-num">{currentPage}</span>
+          <button onClick={nextPage} disabled={!hasMore}>
+            Next Page
+          </button>
+        </div>
       </div>
       <table>
         <thead>
