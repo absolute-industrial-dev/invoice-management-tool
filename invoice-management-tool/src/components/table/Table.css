@@ -5,5 +5,18 @@
 .contain {
   display: flex;
   gap: 2em;
+  align-items: center;
 }
 
+.pagination{
+  display: flex;
+  align-items: center;
+}
+
+.pagination button{
+  margin: 0px 10px !important;
+}
+
+.searchby select{
+  padding: 14px 28px !important;
+}
