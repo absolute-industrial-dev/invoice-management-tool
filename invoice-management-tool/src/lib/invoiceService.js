@@ -1,22 +1,47 @@
 import { supabase } from "./supabase";
 
-export async function fetchInvoices() {
-  const { data, error } = await supabase
-    .schema("finance")
-    .from("invoices")
-    .select("*");
+export async function fetchInvoices(currentPage, searchQuery, searchBy) {
+  const from = (currentPage - 1) * 5;
+  const to = from + 5;
+  const column = searchBy.toLowerCase().split(" ").join("_");
+
+  let query = supabase.from("invoices").select("*").order(column);
+
+  if (searchQuery) {
+    const numericColumns = [
+      "po_number",
+      "si_number",
+      "dr_number",
+      "net_amount",
+      "gross_amount",
+    ];
+
+    if (numericColumns.includes(column)) {
+      query = query.eq(column, searchQuery);
+    } else {
+      query = query.ilike(column, `%${searchQuery}%`);
+    }
+  }
+
+  query = query.range(from, to);
+
+  const { data, error } = await query;
 
   if (error) {
     console.error("Error fetching invoices: ", error);
-    return [];
+    return { data: [], hasMore: false };
   }
 
-  return data;
+  const hasMore = data.length > 5;
+
+  return {
+    data: data.slice(0, 5),
+    hasMore,
+  };
 }
 
 export async function updateInvoiceStatus(invoiceId, newStatus) {
   const { error } = await supabase
-    .schema("finance")
     .from("invoices")
     .update({ status: newStatus })
     .eq("id", invoiceId);
@@ -31,7 +56,6 @@ export async function updateInvoiceStatus(invoiceId, newStatus) {
 
 export async function updateInvoiceData(invoiceId, updatedInvoice) {
   const { error } = await supabase
-    .schema("finance")
     .from("invoices")
     .update(updatedInvoice)
     .eq("id", invoiceId);
