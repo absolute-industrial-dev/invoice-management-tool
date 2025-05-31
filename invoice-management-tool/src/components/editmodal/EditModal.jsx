@@ -235,7 +235,7 @@ export default function EditModal({
           </label>
 
           <div className="form-buttons">
-            <button type="submit">Save</button>
+            <button type="submit" className="sub-btn">Save</button>
             <button type="cancel" onClick={onClose}>
               Cancel
             </button>

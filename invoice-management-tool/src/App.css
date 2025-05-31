@@ -43,7 +43,7 @@ input, .check-container{
 }
 
 button {
-  margin: 20px;
+  margin: 20px !important;
   padding: 14px 28px;
   border: none;
   border-radius: 23px;
@@ -124,7 +124,7 @@ select:hover{
 option{
   background: #f6f6f6;
 }
-
+  
 html.dark form {
   color: white;
   background: #1c1c1c;
@@ -309,3 +309,68 @@ html.dark textarea:focus{
   box-shadow: inset 5px 5px 10px #0f0f0f,
               inset -5px -5px 10px #292929;
 }
+
+button[type="submit"]{
+    background-color: #45ad22;
+    color: #fafafa;
+}
+
+button[type="submit"]:active {
+  background: #45ad22;
+  box-shadow: inset 5px 5px 10px #2b6b15,
+              inset -5px -5px 10px #77e054;
+}
+
+button[type="submit"]:hover {
+  background-color: #35811b;
+}
+
+button[type="cancel"]{
+    background-color: #af3030;
+    color: #fafafa;
+}
+
+button[type="cancel"]:active {
+  background: #c73232;
+  box-shadow: inset 5px 5px 10px #641919,
+              inset -5px -5px 10px #ff4b4b;
+}
+
+button[type="cancel"]:hover {
+background-color: #af3030;
+}
+
+html.dark button[type="submit"] {
+  background-color: #2e7d19;
+  color: #fafafa;
+  box-shadow: 5px 5px 10px #1b4910,
+              -5px -5px 10px #3fae24;
+}
+
+html.dark button[type="submit"]:hover {
+  background-color: #256517;
+}
+
+html.dark button[type="submit"]:active {
+  background: #2e7d19;
+  box-shadow: inset 5px 5px 10px #1c4e10,
+              inset -5px -5px 10px #4dde28;
+}
+
+html.dark button[type="cancel"] {
+  background-color: #8c2a2a;
+  color: #fafafa;
+  box-shadow: 5px 5px 10px #4a1414,
+              -5px -5px 10px #c83e3e;
+}
+
+html.dark button[type="cancel"]:hover {
+  background-color: #7a2424;
+}
+
+html.dark button[type="cancel"]:active {
+  background: #a82e2e;
+  box-shadow: inset 5px 5px 10px #531919,
+              inset -5px -5px 10px #e24c4c;
+}
+

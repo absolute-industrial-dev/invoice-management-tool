@@ -98,8 +98,8 @@ h1 {
   }
 }
 
-form button{
-  margin: 20px;
+.submit.btn{
+  margin: 20px !important;
 }
 
 .icon{

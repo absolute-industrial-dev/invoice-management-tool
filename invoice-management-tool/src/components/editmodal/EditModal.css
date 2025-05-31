@@ -14,7 +14,7 @@
 }
 
 select{
-    padding: 0.6em 1.2em;
+    padding: 0.6em 1.2em !important;
 }
 
 .check-container{
@@ -37,7 +37,6 @@ select{
 .modal-container .form-buttons {
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
   margin-top: 1rem;
 }
 
@@ -49,8 +48,7 @@ select{
 .modal-container {
   background: #eeeeee;
   border-radius: 20px;
-  width: 90%;
-  max-width: 800px;
+  width: 45%;
   max-height: 90vh;
   overflow: hidden; /* Keeps the radius intact */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -91,38 +89,6 @@ button{
     margin: 0px !important;
 }
 
-button[type="submit"]{
-    background-color: #45ad22;
-    color: #fafafa;
-}
-
-button[type="submit"]:active {
-  background: #45ad22;
-  box-shadow: inset 5px 5px 10px #2b6b15,
-              inset -5px -5px 10px #77e054;
-}
-
-button[type="submit"]:hover {
-  background-color: #35811b;
-}
-
-button[type="cancel"]{
-    background-color: #af3030;
-    color: #fafafa;
-}
-
-button[type="cancel"]:active {
-  background: #c73232;
-  box-shadow: inset 5px 5px 10px #641919,
-              inset -5px -5px 10px #ff4b4b;
-}
-
-button[type="cancel"]:hover {
-background-color: #af3030;
-}
-
-
-
 /* Dark mode support */
 html.dark .modal-container {
   background: #1e1e1e;
@@ -135,36 +101,3 @@ html.dark .form{
     box-shadow: none;
 }
 
-html.dark button[type="submit"] {
-  background-color: #2e7d19;
-  color: #fafafa;
-  box-shadow: 5px 5px 10px #1b4910,
-              -5px -5px 10px #3fae24;
-}
-
-html.dark button[type="submit"]:hover {
-  background-color: #256517;
-}
-
-html.dark button[type="submit"]:active {
-  background: #2e7d19;
-  box-shadow: inset 5px 5px 10px #1c4e10,
-              inset -5px -5px 10px #4dde28;
-}
-
-html.dark button[type="cancel"] {
-  background-color: #8c2a2a;
-  color: #fafafa;
-  box-shadow: 5px 5px 10px #4a1414,
-              -5px -5px 10px #c83e3e;
-}
-
-html.dark button[type="cancel"]:hover {
-  background-color: #7a2424;
-}
-
-html.dark button[type="cancel"]:active {
-  background: #a82e2e;
-  box-shadow: inset 5px 5px 10px #531919,
-              inset -5px -5px 10px #e24c4c;
-}

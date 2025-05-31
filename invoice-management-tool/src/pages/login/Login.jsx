@@ -45,7 +45,6 @@ export default function Login() {
       {/* Form animation: fade in and slide up */}
       <motion.form
         onSubmit={handleLogin}
-        className="form"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut", delay: 1.7 }}
@@ -68,7 +67,7 @@ export default function Login() {
             />
           </div>
 
-          <button type="submit">Log in</button>
+          <button type="submit" className="submit-btn">Log in</button>
         </div>
       </motion.form>
       <ParticleBackground/>
