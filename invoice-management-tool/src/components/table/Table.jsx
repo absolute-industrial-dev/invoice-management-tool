@@ -13,6 +13,10 @@ export default function Table() {
   const [invoices, setInvoices] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchBy, setSearchBy] = useState("PO Number");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
 
   const headers = [
     "PO Number",
@@ -27,15 +31,26 @@ export default function Table() {
     "Actions",
   ];
   const statuses = ["Sales Log", "Collectibles", "Last File"];
+  const searchByFilters = [
+    "PO Number",
+    "SI Number",
+    "DR Number",
+    "Net Amount",
+    "Gross Amount",
+    "Company Name",
+    "Description",
+    "Status",
+  ];
 
   useEffect(() => {
     const loadInvoices = async () => {
-      const data = await fetchInvoices();
-      setInvoices(data);
+      const result = await fetchInvoices(currentPage, searchQuery, searchBy);
+      setInvoices(result.data);
+      setHasMore(result.hasMore);
     };
 
     loadInvoices();
-  }, []);
+  }, [currentPage, searchQuery, searchBy]);
 
   const handleStatusChange = async (invoiceId, newStatus) => {
     const success = await updateInvoiceStatus(invoiceId, newStatus);
@@ -70,11 +85,38 @@ export default function Table() {
     }
   };
 
+  const previousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (hasMore) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
   return (
     <div className="main-container">
       <div className="contain">
-        <Searchbar className="searchb" />
-        <Searchby />
+        <Searchbar
+          className="searchb"
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
+        <Searchby
+          searchByFilters={searchByFilters}
+          searchBy={searchBy}
+          setSearchBy={setSearchBy}
+        />
+        <button onClick={previousPage} disabled={currentPage === 1}>
+          Previous Page
+        </button>
+        <span>{currentPage}</span>
+        <button onClick={nextPage} disabled={!hasMore}>
+          Next Page
+        </button>
       </div>
       <table>
         <thead>
