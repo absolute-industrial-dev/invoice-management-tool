@@ -127,8 +127,12 @@ export default function Table() {
           className="searchby"
         />
         <div className="pagination">
+          <button onClick={() => handleColumnOrder(searchBy)}>
+            {" "}
+            Set Order: {columnOrder ? "Ascending" : "Descending"}
+          </button>
           <button onClick={previousPage} disabled={currentPage === 1}>
-          Previous Page
+            Previous Page
           </button>
           <span className="page-num">{currentPage}</span>
           <button onClick={nextPage} disabled={!hasMore}>
