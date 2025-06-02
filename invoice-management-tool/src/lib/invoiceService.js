@@ -90,3 +90,14 @@ export async function updateIsPaid(invoiceId, newBoolean) {
 
   return true;
 }
+
+export async function addNewInvoice(formStateData) {
+  const { error } = await supabase.from("invoices").insert([formStateData]);
+
+  if (error) {
+    console.error("Error updating new invoice: ", error);
+    return false;
+  }
+
+  return true;
+}

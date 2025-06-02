@@ -10,7 +10,7 @@ export default function EditModal({
 }) {
   const [formState, setFormState] = useState({});
 
-  const form2307 = ["With 2307", "Without 2307", "On Hold"];
+  const form2307 = ["Without 2307", "With 2307", "On Hold"];
 
   useEffect(() => {
     if (invoiceData) {
@@ -28,16 +28,12 @@ export default function EditModal({
     onSave(formState);
   };
 
-  /* const formattedDate = new Date(formState.date_collected)
-    .toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "2-digit",
-    })
-    .replace(/\s/g, "-"); */
+  const invoiceDate = formState.invoice_date
+    ? new Date(formState.invoice_date).toISOString().split("T")[0]
+    : "";
 
-  const inputDate = formState.date_collected
-    ? new Date(formState.date_collected).toISOString().split("T")[0]
+  const dueDate = formState.due_date
+    ? new Date(formState.due_date).toISOString().split("T")[0]
     : "";
 
   if (!isOpen) return null;
@@ -48,202 +44,241 @@ export default function EditModal({
         <h2>Edit Invoice</h2>
         <div className="modal-scroll-content">
           <form onSubmit={handleSubmit} className="form">
-          <label>
-            Status:
-            <select
-              name="status"
-              value={formState.status || ""}
-              onChange={handleChange}
-            >
-              {statuses.map((status) => (
-                <option key={status} value={status}>
-                  {status}
-                </option>
-              ))}
-            </select>
-          </label>
+            <label>
+              Status:
+              <select
+                name="status"
+                value={formState.status || ""}
+                onChange={handleChange}
+              >
+                {statuses.map((status) => (
+                  <option key={status} value={status}>
+                    {status}
+                  </option>
+                ))}
+              </select>
+            </label>
 
-          <label>
-            PO Number:
-            <input
-              type="text"
-              name="po_number"
-              value={formState.po_number || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            SI Number:
-            <input
-              type="text"
-              name="si_number"
-              value={formState.si_number || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            DR Number:
-            <input
-              type="text"
-              name="dr_number"
-              value={formState.dr_number || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Net Amount:
-            <input
-              type="text"
-              name="net_amount"
-              value={formState.net_amount || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Gross Amount:
-            <input
-              type="text"
-              name="gross_amount"
-              value={formState.gross_amount || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Date Collected:
-            <input
-              type="date"
-              name="date_collected"
-              value={inputDate}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Company Name:
-            <input
-              type="text"
-              name="company_name"
-              value={formState.company_name || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Description:
-            <textarea
-              name="description"
-              value={formState.description || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            EWT
-            <input
-              type="text"
-              name="ewt"
-              value={formState.ewt || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Without EWT
-            <input
-              type="text"
-              name="wo_ewt"
-              value={formState.wo_ewt || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Counterchecking EWT
-            <input
-              type="text"
-              name="counterchecking_ewt"
-              value={formState.counterchecking_ewt || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Is Service?
-            <div className="check-container">
+            <label>
+              PO Number:
               <input
-              type="checkbox"
-              name="is_service"
-              checked={!!formState.is_service}
-              onChange={(e) =>
-                setFormState((prev) => ({
-                  ...prev,
-                  is_service: e.target.checked,
-                }))
-              }
-            />
+                type="text"
+                name="po_number"
+                value={formState.po_number || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              SI Number:
+              <input
+                type="text"
+                name="si_number"
+                value={formState.si_number || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              DR Number:
+              <input
+                type="text"
+                name="dr_number"
+                value={formState.dr_number || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              TIN:
+              <input
+                type="text"
+                name="tin_number"
+                value={formState.tin_number || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Net Amount:
+              <input
+                type="text"
+                name="net_amount"
+                value={formState.net_amount || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Gross Amount:
+              <input
+                type="text"
+                name="gross_amount"
+                value={formState.gross_amount || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Invoice Date:
+              <input
+                type="date"
+                name="invoice_date"
+                value={invoiceDate}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Due Date:
+              <input
+                type="date"
+                name="due_date"
+                value={dueDate}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Company Name:
+              <input
+                type="text"
+                name="company_name"
+                value={formState.company_name || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Description:
+              <textarea
+                name="description"
+                value={formState.description || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Address:
+              <textarea
+                name="address"
+                value={formState.address || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              EWT
+              <input
+                type="text"
+                name="ewt"
+                value={formState.ewt || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Without EWT
+              <input
+                type="text"
+                name="wo_ewt"
+                value={formState.wo_ewt || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Counterchecking EWT
+              <input
+                type="text"
+                name="counterchecking_ewt"
+                value={formState.counterchecking_ewt || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Is Service?
+              <div className="check-container">
+                <input
+                  type="checkbox"
+                  name="is_service"
+                  checked={!!formState.is_service}
+                  onChange={(e) =>
+                    setFormState((prev) => ({
+                      ...prev,
+                      is_service: e.target.checked,
+                    }))
+                  }
+                />
+              </div>
+            </label>
+
+            <label>
+              Agent Name
+              <input
+                type="text"
+                name="agent"
+                value={formState.agent || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Field Sales
+              <input
+                type="text"
+                name="field_sales"
+                value={formState.field_sales || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Form 2307
+              <select
+                name="form_2307"
+                value={formState.form_2307 || ""}
+                onChange={handleChange}
+              >
+                {form2307.map((formOption) => (
+                  <option key={formOption} value={formOption}>
+                    {formOption}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label>
+              OR Number:
+              <input
+                type="text"
+                name="or_number"
+                value={formState.or_number || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              Bank Deposited
+              <input
+                type="text"
+                name="bank_deposited"
+                value={formState.bank_deposited || ""}
+                onChange={handleChange}
+              />
+            </label>
+
+            <div className="form-buttons">
+              <button type="submit" className="sub-btn">
+                Save
+              </button>
+              <button type="cancel" onClick={onClose}>
+                Cancel
+              </button>
             </div>
-          </label>
-
-          <label>
-            Agent Name
-            <input
-              type="text"
-              name="agent"
-              value={formState.agent || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Field Sales
-            <input
-              type="text"
-              name="field_sales"
-              value={formState.field_sales || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label>
-            Form 2307
-            <select
-              name="form_2307"
-              value={formState.form_2307 || ""}
-              onChange={handleChange}
-            >
-              {form2307.map((formOption) => (
-                <option key={formOption} value={formOption}>
-                  {formOption}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label>
-            Bank Deposited
-            <input
-              type="text"
-              name="bank_deposited"
-              value={formState.bank_deposited || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <div className="form-buttons">
-            <button type="submit" className="sub-btn">Save</button>
-            <button type="cancel" onClick={onClose}>
-              Cancel
-            </button>
-          </div>
-        </form>
+          </form>
         </div>
-        
-        
       </div>
     </div>
   );
