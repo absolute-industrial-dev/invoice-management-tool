@@ -10,7 +10,7 @@ export default function EditModal({
 }) {
   const [formState, setFormState] = useState({});
 
-  const form2307 = ["With 2307", "Without 2307", "On Hold"];
+  const form2307 = ["Without 2307", "With 2307", "On Hold"];
 
   useEffect(() => {
     if (invoiceData) {
@@ -28,16 +28,12 @@ export default function EditModal({
     onSave(formState);
   };
 
-  /* const formattedDate = new Date(formState.invoice_date)
-    .toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "2-digit",
-    })
-    .replace(/\s/g, "-"); */
-
-  const inputDate = formState.invoice_date
+  const invoiceDate = formState.invoice_date
     ? new Date(formState.invoice_date).toISOString().split("T")[0]
+    : "";
+
+  const dueDate = formState.due_date
+    ? new Date(formState.due_date).toISOString().split("T")[0]
     : "";
 
   if (!isOpen) return null;
@@ -128,7 +124,7 @@ export default function EditModal({
               <input
                 type="date"
                 name="invoice_date"
-                value={inputDate}
+                value={invoiceDate}
                 onChange={handleChange}
               />
             </label>
@@ -138,7 +134,7 @@ export default function EditModal({
               <input
                 type="date"
                 name="due_date"
-                value={inputDate}
+                value={dueDate}
                 onChange={handleChange}
               />
             </label>
@@ -251,6 +247,16 @@ export default function EditModal({
                   </option>
                 ))}
               </select>
+            </label>
+
+            <label>
+              OR Number:
+              <input
+                type="text"
+                name="or_number"
+                value={formState.or_number || ""}
+                onChange={handleChange}
+              />
             </label>
 
             <label>
