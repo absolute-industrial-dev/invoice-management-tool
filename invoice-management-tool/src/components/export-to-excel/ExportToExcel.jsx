@@ -37,7 +37,7 @@ export default function ExportToExcel({data}) {
   };
   return (
     <button className="ete-button" onClick={exportToExcel}>
-      <RiFileExcel2Fill />
+      <RiFileExcel2Fill className="excel-icon"/>
     </button>
   );
 }
