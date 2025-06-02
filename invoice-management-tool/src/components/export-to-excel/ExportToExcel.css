@@ -7,7 +7,21 @@
   background-color: rgb(51, 165, 82);
   align-items: center;
   justify-content: center;
+  border:2px solid;
+  border-color:  rgb(51, 165, 82);
 }
+
+html.dark .ete-button:hover {
+  color: rgb(51, 165, 82);
+  background-color: transparent;
+}
+
+.ete-button:hover {
+  color: rgb(51, 165, 82);
+  background-color: transparent;
+}
+
+
 
 .excel-icon {
     width: 30px;
@@ -17,3 +31,5 @@
 html.dark .ete-button {
   background-color: rgb(51, 165, 82);
 }
+
+
