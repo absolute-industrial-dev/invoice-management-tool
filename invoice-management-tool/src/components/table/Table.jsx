@@ -8,6 +8,7 @@ import {
   updateInvoiceData,
 } from "../../lib/invoiceService";
 import EditModal from "../editmodal/EditModal";
+import ExportToExcel from "../export-to-excel/ExportToExcel";
 
 export default function Table() {
   const [invoices, setInvoices] = useState([]);
@@ -139,6 +140,8 @@ export default function Table() {
             Next Page
           </button>
         </div>
+
+        <ExportToExcel/>
       </div>
       <table>
         <thead>
