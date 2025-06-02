@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    //task to run tauri
+    {
+      "label": "start tauri",
+      "type": "shell",
+      "command": "cd invoice-management-tool; npm run tauri dev",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
