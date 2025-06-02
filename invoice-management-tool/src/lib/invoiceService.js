@@ -76,3 +76,17 @@ export async function updateInvoiceData(invoiceId, updatedInvoice) {
 
   return true;
 }
+
+export async function updateIsPaid(invoiceId, newBoolean) {
+  const { error } = await supabase
+    .from("invoices")
+    .update({ is_paid: newBoolean })
+    .eq("id", invoiceId);
+
+  if (error) {
+    console.error("Error updating invoice paid status: ", error);
+    return false;
+  }
+
+  return true;
+}
