@@ -1,22 +1,76 @@
-.main-container{
+.main-container {
   margin: 3em;
+  display: flex;
+  flex-direction: column;
 }
 
 .contain {
   display: flex;
   gap: 2em;
   align-items: center;
+  justify-content: center;
 }
 
-.pagination{
+.pagination {
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
-.pagination button{
+.pagination button {
+  display: flex;
   margin: 0px 10px !important;
 }
 
-.searchby select{
-  padding: 14px 28px !important;
+.right-container {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-right: auto;
 }
+
+.searchb {
+  display: flex;
+}
+
+.searchby {
+  display: flex;
+  margin-right: auto;
+}
+
+.searchby select {
+  display: flex;
+  padding: 14px 14px !important;
+  margin-right: auto;
+}
+
+.next-size {
+  display: flex;
+  border-radius: 100px;
+  opacity: 80%;
+  width: 30px;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-num {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.actions-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.isPaid-label {
+  font-size: 14px;
+  font-weight: 500;
+  width: max-content;
+}
+
+/* Page responsiveness */
+

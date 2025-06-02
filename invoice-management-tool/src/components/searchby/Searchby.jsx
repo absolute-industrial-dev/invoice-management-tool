@@ -12,13 +12,20 @@ export default function Searchby({
 
   return (
     <div className={`searchbycontainertest ${className}`}>
-      <select name="searchByFilters" value={searchBy} onChange={handleChange}>
-        {searchByFilters.map((filter) => (
-          <option key={filter} value={filter}>
-            {filter}
-          </option>
-        ))}
-      </select>
+      <div className="search-wrapper">
+        <select
+          name="searchByFilters"
+          className="seachBy-Filters"
+          value={searchBy}
+          onChange={handleChange}
+        >
+          {searchByFilters.map((filter) => (
+            <option key={filter} value={filter}>
+              {filter}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }
