@@ -1,4 +1,4 @@
-.container{
+.container {
   align-items: center;
   justify-content: center;
   display: flex;
@@ -13,25 +13,24 @@ form {
   align-items: center;
   justify-content: center;
   width: 20em;
-  height: auto; 
+  height: auto;
   display: flex;
 }
 
-.field-container{
+.field-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
   align-items: center;
 }
 
-.fields input{
+.fields input {
   display: flex;
   flex-direction: column;
   width: fit-content;
   align-items: center;
   justify-content: center;
 }
-
 
 .logo {
   height: 6em;
@@ -44,9 +43,11 @@ form {
 .logo.vite:hover {
   filter: drop-shadow(0 0 2em #747bff);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafb);
 }
+
 .logo.tauri:hover {
   filter: drop-shadow(0 0 2em #24c8db);
 }
@@ -73,7 +74,7 @@ h1 {
 
 .particle {
   position: absolute;
-  bottom: -150px;
+  bottom: -100px;
   width: 15px;
   height: 15px;
   border-radius: 50%;
@@ -81,12 +82,13 @@ h1 {
   animation: floatUp linear infinite;
   filter: blur(4px);
   opacity: 0.8;
+  will-change: transform, opacity;
 }
 
 @keyframes floatUp {
   0% {
     transform: translate(0, 0) rotate(0deg);
-    opacity: 0; 
+    opacity: 0;
   }
   50% {
     transform: translate(10px, -50%) rotate(180deg);
@@ -98,16 +100,16 @@ h1 {
   }
 }
 
-.submit.btn{
+.submit.btn {
   margin: 20px !important;
 }
 
-.icon{
+.icon {
   width: 1.2em;
   color: #45ad22;
 }
 
-label{
+label {
   display: flex;
   gap: 10px;
   margin-bottom: 5px;
