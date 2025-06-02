@@ -6,6 +6,7 @@ import {
   fetchInvoices,
   updateInvoiceStatus,
   updateInvoiceData,
+  updateIsPaid,
 } from "../../lib/invoiceService";
 import EditModal from "../editmodal/EditModal";
 import ExportToExcel from "../export-to-excel/ExportToExcel";
@@ -19,6 +20,7 @@ export default function Table() {
   const [currentPage, setCurrentPage] = useState(1);
   const [hasMore, setHasMore] = useState(false);
   const [columnOrder, setColumnOrder] = useState(true);
+  const [paidStatus, setPaidStatus] = useState({});
 
   const headers = [
     "PO Number",
@@ -45,19 +47,19 @@ export default function Table() {
   ];
 
   useEffect(() => {
-    const loadInvoices = async () => {
-      const result = await fetchInvoices(
-        currentPage,
-        searchQuery,
-        searchBy,
-        columnOrder
-      );
-      setInvoices(result.data);
-      setHasMore(result.hasMore);
-    };
-
     loadInvoices();
   }, [currentPage, searchQuery, searchBy, columnOrder]);
+
+  const loadInvoices = async () => {
+    const result = await fetchInvoices(
+      currentPage,
+      searchQuery,
+      searchBy,
+      columnOrder
+    );
+    setInvoices(result.data);
+    setHasMore(result.hasMore);
+  };
 
   const handleStatusChange = async (invoiceId, newStatus) => {
     const success = await updateInvoiceStatus(invoiceId, newStatus);
@@ -113,6 +115,18 @@ export default function Table() {
     }
   };
 
+  const toggleIsPaid = async (invoiceId, newBoolean) => {
+    const success = await updateIsPaid(invoiceId, newBoolean);
+    if (success) {
+      setPaidStatus((prev) => ({ ...prev, [invoiceId]: newBoolean }));
+
+      const newStatus = newBoolean ? "Last File" : "Collectibles";
+      await updateInvoiceStatus(invoiceId, newStatus);
+    }
+
+    loadInvoices();
+  };
+
   return (
     <div className="main-container">
       <div className="contain">
@@ -141,7 +155,7 @@ export default function Table() {
           </button>
         </div>
 
-        <ExportToExcel/>
+        <ExportToExcel />
       </div>
       <table>
         <thead>
@@ -186,6 +200,18 @@ export default function Table() {
               </td>
               <td>
                 <button onClick={() => openEditModal(invoice)}>Edit</button>
+                {invoice.status !== "Sales Log" && (
+                  <>
+                    <input
+                      type="checkbox"
+                      checked={paidStatus[invoice.id] ?? invoice.is_paid}
+                      onChange={(e) =>
+                        toggleIsPaid(invoice.id, e.target.checked)
+                      }
+                    />
+                    <label htmlFor="is_paid">Is Paid?</label>
+                  </>
+                )}
               </td>
             </tr>
           ))}
