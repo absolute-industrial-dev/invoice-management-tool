@@ -3,7 +3,7 @@ import { RiFileExcel2Fill } from "react-icons/ri";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 
-export default function ExportToExcel({data}) {
+export default function ExportToExcel({ data }) {
   const status = "Sales Log";
   // Function to export to excel
   const exportToExcel = async () => {
@@ -53,8 +53,8 @@ function salesLog(data) {
     Description: item.description,
     "Tin Number": item.tin_number,
     Address: item.address,
-    "Invoice Date": item.invoice_date,
-    "Due Date": item.due_date,
+    "Invoice Date": formatDate(item.invoice_date),
+    "Due Date": formatDate(item.due_date),
     "Collection Date": "",
     "OR Number": "",
     Agent: item.agent,
@@ -76,4 +76,12 @@ function createColumns(num) {
     columns.push({ wch: 25 });
   }
   return columns;
+}
+
+function formatDate(date) {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 }
