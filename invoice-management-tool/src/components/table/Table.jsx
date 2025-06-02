@@ -10,6 +10,7 @@ import {
 } from "../../lib/invoiceService";
 import EditModal from "../editmodal/EditModal";
 import ExportToExcel from "../export-to-excel/ExportToExcel";
+import AddModal from "../addmodal/AddModal";
 
 export default function Table() {
   const [invoices, setInvoices] = useState([]);
@@ -28,7 +29,7 @@ export default function Table() {
     "DR Number",
     "Net Amount",
     "Gross Amount",
-    "Date Collected",
+    "Invoice Date",
     "Company Name",
     "Description",
     "Status",
@@ -141,11 +142,12 @@ export default function Table() {
           setSearchBy={setSearchBy}
           className="searchby"
         />
+        <button onClick={() => setIsModalOpen(true)}>Add Invoice</button>
+        <button onClick={() => handleColumnOrder(searchBy)}>
+          {" "}
+          Set Order: {columnOrder ? "Ascending" : "Descending"}
+        </button>
         <div className="pagination">
-          <button onClick={() => handleColumnOrder(searchBy)}>
-            {" "}
-            Set Order: {columnOrder ? "Ascending" : "Descending"}
-          </button>
           <button onClick={previousPage} disabled={currentPage === 1}>
             Previous Page
           </button>
@@ -154,7 +156,6 @@ export default function Table() {
             Next Page
           </button>
         </div>
-
         <ExportToExcel data={invoices} />
       </div>
       <table>
@@ -174,7 +175,7 @@ export default function Table() {
               <td>{invoice.net_amount}</td>
               <td>{invoice.gross_amount}</td>
               <td>
-                {new Date(invoice.date_collected)
+                {new Date(invoice.invoice_date)
                   .toLocaleDateString("en-GB", {
                     day: "2-digit",
                     month: "short",
@@ -217,13 +218,20 @@ export default function Table() {
           ))}
         </tbody>
       </table>
-      {isModalOpen && (
+      {selectedInvoice ? (
         <EditModal
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           invoiceData={selectedInvoice}
           onSave={handleSaveInvoice}
           statuses={statuses}
+        />
+      ) : (
+        <AddModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          statuses={statuses}
+          reloadInvoices={loadInvoices}
         />
       )}
     </div>
