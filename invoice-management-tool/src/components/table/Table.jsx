@@ -165,7 +165,6 @@ export default function Table() {
                   })
                   .replace(/\s/g, "-")}
               </td>
-
               <td>{invoice.company_name}</td>
               <td>{invoice.description}</td>
               <td>

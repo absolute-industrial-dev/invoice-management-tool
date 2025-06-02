@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Main from "./pages/main/Main";
 import Login from "./pages/login/Login";
 import { useAuth } from "./hooks/useAuth";
-import "./App.css"
+import "./App.css";
 
 export default function App() {
   const { user, loading } = useAuth();

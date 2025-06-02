@@ -1,6 +1,11 @@
 import "./Searchby.css";
 
-export default function Searchby({ className = "", searchByFilters, searchBy, setSearchBy }) {
+export default function Searchby({
+  className = "",
+  searchByFilters,
+  searchBy,
+  setSearchBy,
+}) {
   const handleChange = (e) => {
     setSearchBy(e.target.value);
   };
