@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { addNewInvoice } from "../../lib/invoiceService";
 import "./AddModal.css";
 
-export default function AddModal({
-  isOpen,
-  onClose,
-  statuses,
-}) {
+export default function AddModal({ isOpen, onClose, statuses, reloadInvoices }) {
   const [formState, setFormState] = useState({});
 
   useEffect(() => {
@@ -22,8 +18,11 @@ export default function AddModal({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addNewInvoice(formState);
-    onClose();
+    const success = await addNewInvoice(formState);
+    if (success) {
+      reloadInvoices();
+      onClose();
+    }
   };
 
   const inputDate = formState.invoice_date
