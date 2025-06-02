@@ -155,7 +155,7 @@ export default function Table() {
           </button>
         </div>
 
-        <ExportToExcel />
+        <ExportToExcel data={invoices} />
       </div>
       <table>
         <thead>
