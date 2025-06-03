@@ -2,9 +2,10 @@ import "./ExportToExcel.css";
 import { RiFileExcel2Fill } from "react-icons/ri";
 import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
+import { fetchExcelInvoices } from "../../lib/invoiceService";
 
-export default function ExportToExcel({ data }) {
-  const status = "Last File";
+export default function ExportToExcel(startDate, endDate) {
+  const status = "Sales Log"
   const convertedStatus = status.toLowerCase().replace(/\s+/g, "");
 
   const date = new Date();
@@ -16,6 +17,7 @@ export default function ExportToExcel({ data }) {
 
   // Function to export to excel
   const exportToExcel = async () => {
+    const data = await fetchExcelInvoices(status, startDate, endDate);
     let templateUrl = `template-${convertedStatus}.xlsx`;
 
     let processedData = null;
@@ -59,7 +61,7 @@ export default function ExportToExcel({ data }) {
   );
 }
 
-function salesLog(data) {
+function salesLog({ data }) {
   return data.map((item) => ({
     "Company Name": item.company_name,
     "PO Number": item.po_number,
@@ -87,7 +89,7 @@ function salesLog(data) {
   }));
 }
 
-function collectibles(data) {
+function collectibles({ data }) {
   return data.map((item) => ({
     "Company Name": item.company_name,
     "PO Number": item.po_number,
@@ -103,7 +105,7 @@ function collectibles(data) {
   }));
 }
 
-function lastFile(data) {
+function lastFile({ data }) {
   return data.map((item) => ({
     "Company Name": item.company_name,
     "PO Number": item.po_number,
