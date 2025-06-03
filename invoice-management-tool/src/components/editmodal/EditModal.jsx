@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./EditModal.css";
 import { addNewInvoice } from "../../lib/invoiceService";
 import Loading from "../../utilities/loading/loading";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function EditModal({
   isOpen,
@@ -57,7 +58,10 @@ export default function EditModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     setisLoading(true);
+
+    const success = 
     onSave(formState);
+    toast.success("Saved Successfully!");
   };
 
   const invoiceDate = formState.invoice_date
