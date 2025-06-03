@@ -4,8 +4,7 @@ import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import { fetchExcelInvoices } from "../../lib/invoiceService";
 
-export default function ExportToExcel(startDate, endDate) {
-  const status = "Sales Log"
+export default function ExportToExcel({status, startDate, endDate}) {
   const convertedStatus = status.toLowerCase().replace(/\s+/g, "");
 
   const date = new Date();
