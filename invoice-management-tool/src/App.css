@@ -241,6 +241,7 @@ input[type="checkbox"]::after {
   left: 50%;
   width: 6px;
   height: 12px;
+  margin-top: -2px;
   border: solid #45ad22;
   border-width: 0 2px 2px 0;
   transform: translate(-50%, -50%) rotate(45deg);
