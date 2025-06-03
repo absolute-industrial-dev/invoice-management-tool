@@ -85,7 +85,7 @@ export default function AddModal({
               </select>
             </label>
 
-            <label>
+            <label htmlFor="po_number">
               PO Number:
               <input
                 id="po_number"
@@ -99,7 +99,7 @@ export default function AddModal({
               />
             </label>
 
-            <label>
+            <label htmlFor="si_number">
               SI Number:
               <input
                 id="si_number"
@@ -112,7 +112,7 @@ export default function AddModal({
               />
             </label>
 
-            <label>
+            <label htmlFor="dr_number">
               DR Number:
               <input
                 id="dr_number"
@@ -125,7 +125,7 @@ export default function AddModal({
               />
             </label>
 
-            <label>
+            <label htmlFor="net_amount">
               Net Amount:
               <input
                 id="net_amount"
@@ -138,7 +138,7 @@ export default function AddModal({
               />
             </label>
 
-            <label>
+            <label htmlFor="gross_amount">
               Gross Amount:
               <input
                 id="gross_amount"
@@ -151,7 +151,7 @@ export default function AddModal({
               />
             </label>
 
-            <label>
+            <label htmlFor="invoice_date">
               Invoice Date:
               <input
                 id="invoice_date"
@@ -164,7 +164,7 @@ export default function AddModal({
               />
             </label>
 
-            <label>
+            <label htmlFor="company_name">
               Company Name:
               <input
                 id="company_name"
@@ -177,7 +177,7 @@ export default function AddModal({
               />
             </label>
 
-            <label>
+            <label htmlFor="description">
               Description:
               <textarea
                 id="description"
