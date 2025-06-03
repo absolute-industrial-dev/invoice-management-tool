@@ -51,6 +51,10 @@ export default function EditModal({
     ? new Date(formState.due_date).toISOString().split("T")[0]
     : "";
 
+  const dateCollected = formState.date_collected
+    ? new Date(formState.date_collected).toISOString().split("T")[0]
+    : "";
+
   if (!isOpen) return null;
 
   return (
@@ -188,7 +192,20 @@ export default function EditModal({
                 value={dueDate}
                 onChange={handleChange}
                 aria-required="true"
-                aria-label="Due date"
+                aria-label="Due Date"
+              />
+            </label>
+
+            <label htmlFor="date_collected">
+              Date Collected:
+              <input
+                id="date_collected"
+                type="date"
+                name="date_collected"
+                value={dateCollected}
+                onChange={handleChange}
+                aria-required="true"
+                aria-label="Date Collected"
               />
             </label>
 
