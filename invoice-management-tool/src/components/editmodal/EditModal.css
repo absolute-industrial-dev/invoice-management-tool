@@ -38,6 +38,11 @@ select{
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
+  gap: 20px;
+}
+
+.form-buttons button{
+  margin: 0 !important;
 }
 
 .modal-container label.full-width,
