@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./EditModal.css";
+import { addNewInvoice } from "../../lib/invoiceService";
+import Loading from "../../utilities/loading/loading";
 
 export default function EditModal({
   isOpen,
@@ -11,6 +13,7 @@ export default function EditModal({
   const [formState, setFormState] = useState({});
   const modalRef = useRef(null);
   const firstInputRef = useRef(null);
+  const [isLoading, setisLoading] = useState(false);
 
   const form2307 = ["Without 2307", "With 2307", "On Hold"];
 
@@ -53,6 +56,7 @@ export default function EditModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setisLoading(true);
     onSave(formState);
   };
 
@@ -388,7 +392,7 @@ export default function EditModal({
 
             <div className="form-buttons">
               <button type="submit" className="sub-btn">
-                Save
+                {isLoading ? <Loading /> : <>Save</>}
               </button>
               <button type="cancel" onClick={onClose}>
                 Cancel
