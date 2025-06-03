@@ -113,7 +113,20 @@ export async function fetchExcelInvoices(status, startDate, endDate) {
 
     if (error) throw error;
 
-    return {data};
+    return { data };
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}
+
+export async function monitorDueDate() {
+  try {
+    const { data, error } = await supabase.rpc("monitor_due_date");
+
+    if (error) throw error;
+
+    return;
   } catch (error) {
     console.error(error);
     return error;
