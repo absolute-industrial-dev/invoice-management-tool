@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { addNewInvoice } from "../../lib/invoiceService";
 import "./AddModal.css";
+import Loading from "../../utilities/loading/loading";
 
 export default function AddModal({
   isOpen,
@@ -11,6 +12,7 @@ export default function AddModal({
   const [formState, setFormState] = useState({});
   const modalRef = useRef(null);
   const firstInputRef = useRef(null);
+  const [isLoading, setisLoading] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -34,7 +36,13 @@ export default function AddModal({
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    const numericFields = ["po_number", "si_number", "dr_number", "net_amount", "gross_amount"];
+    const numericFields = [
+      "po_number",
+      "si_number",
+      "dr_number",
+      "net_amount",
+      "gross_amount",
+    ];
 
     if (numericFields.includes(name)) {
       const isValid = /^\d*\.?\d*$/.test(value);
@@ -45,11 +53,15 @@ export default function AddModal({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setisLoading(true);
     const success = await addNewInvoice(formState);
     if (success) {
       reloadInvoices();
+      setisLoading(false);
       onClose();
     }
+
+    setisLoading(false);
   };
 
   const inputDate = formState.invoice_date
@@ -204,7 +216,7 @@ export default function AddModal({
 
             <div className="form-buttons">
               <button type="submit" className="sub-btn">
-                Save
+                {isLoading ? <Loading/> : <>Save</>}
               </button>
               <button type="cancel" onClick={onClose}>
                 Cancel

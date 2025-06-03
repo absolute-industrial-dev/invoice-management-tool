@@ -56,10 +56,6 @@ button {
 }
 
 button:hover {
-  box-shadow: 8px 8px 16px #c7c7c7, -8px -8px 16px #f9f9f9;
-}
-
-button:active {
   background: #e0e0e0;
   box-shadow: inset 5px 5px 10px #9f9f9f, inset -5px -5px 10px #ffffff;
 }
@@ -88,6 +84,16 @@ td {
   border-bottom: 1px solid #e0e0e0;
 }
 
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.205); /* subtle dark overlay */
+  cursor: pointer;
+}
+
+
 th {
   font-weight: 600;
   font-size: 1rem;
@@ -95,6 +101,10 @@ th {
 }
 
 select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
   border: none;
   border-radius: 23px;
   padding: 14px;
@@ -103,10 +113,20 @@ select {
   font-size: 1em;
   font-weight: 600;
   color: #2c2c2c;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='%23000000' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 10px 6px;
 }
 
 select:hover {
   box-shadow: inset 5px 5px 10px #9f9f9f, inset -5px -5px 10px #ffffff;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='%23000000' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 10px 6px;
 }
 
 option {
@@ -137,10 +157,6 @@ html.dark button {
 }
 
 html.dark button:hover {
-  box-shadow: 8px 8px 16px #0c0c0c, -8px -8px 16px #1e1e1e;
-}
-
-html.dark button:active {
   background: #181818;
   box-shadow: inset 5px 5px 10px #0a0a0a, inset -5px -5px 10px #222222;
 }
@@ -169,11 +185,21 @@ html.dark select {
   background: #1c1c1c;
   box-shadow: 5px 5px 10px #0f0f0f, -5px -5px 10px #292929;
   color: #f6f6f6;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='%23ffffff' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 10px 6px;
 }
 
 html.dark select:hover {
   background: #181818;
   box-shadow: inset 5px 5px 10px #0a0a0a, inset -5px -5px 10px #222222;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='%23ffffff' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 10px 6px;
 }
 
 html.dark option {
@@ -215,6 +241,7 @@ input[type="checkbox"]::after {
   left: 50%;
   width: 6px;
   height: 12px;
+  margin-top: -2px;
   border: solid #45ad22;
   border-width: 0 2px 2px 0;
   transform: translate(-50%, -50%) rotate(45deg);
@@ -285,13 +312,9 @@ button[type="submit"] {
   color: #fafafa;
 }
 
-button[type="submit"]:active {
+button[type="submit"]:hover {
   background: #45ad22;
   box-shadow: inset 5px 5px 10px #2b6b15, inset -5px -5px 10px #77e054;
-}
-
-button[type="submit"]:hover {
-  background-color: #35811b;
 }
 
 button[type="cancel"] {
@@ -299,26 +322,18 @@ button[type="cancel"] {
   color: #fafafa;
 }
 
-button[type="cancel"]:active {
+button[type="cancel"]:hover {
   background: #c73232;
   box-shadow: inset 5px 5px 10px #641919, inset -5px -5px 10px #ff4b4b;
 }
 
-button[type="cancel"]:hover {
-  background-color: #af3030;
-}
-
 html.dark button[type="submit"] {
-  background-color: #2e7d19;
-  color: #fafafa;
-  box-shadow: 5px 5px 10px #1b4910, -5px -5px 10px #3fae24;
+  color: white;
+  background: #317a18;
+  box-shadow: 12px 12px 24px #0f0f0f, -12px -12px 24px #292929;
 }
 
 html.dark button[type="submit"]:hover {
-  background-color: #256517;
-}
-
-html.dark button[type="submit"]:active {
   background: #2e7d19;
   box-shadow: inset 5px 5px 10px #1c4e10, inset -5px -5px 10px #4dde28;
 }
@@ -326,14 +341,10 @@ html.dark button[type="submit"]:active {
 html.dark button[type="cancel"] {
   background-color: #8c2a2a;
   color: #fafafa;
-  box-shadow: 5px 5px 10px #4a1414, -5px -5px 10px #c83e3e;
+  box-shadow: 12px 12px 24px #0f0f0f, -12px -12px 24px #292929;
 }
 
 html.dark button[type="cancel"]:hover {
-  background-color: #7a2424;
-}
-
-html.dark button[type="cancel"]:active {
   background: #a82e2e;
   box-shadow: inset 5px 5px 10px #531919, inset -5px -5px 10px #e24c4c;
 }
