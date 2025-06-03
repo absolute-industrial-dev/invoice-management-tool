@@ -56,6 +56,10 @@ export default function Table() {
     loadInvoices();
   }, [currentPage, searchQuery, searchBy, columnOrder]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, searchBy]);
+
   const loadInvoices = async () => {
     const result = await fetchInvoices(
       currentPage,
@@ -299,7 +303,6 @@ export default function Table() {
         <AddModal
           isOpen={isModalOpen}
           onClose={handleCloseModal}
-          statuses={statuses}
           reloadInvoices={loadInvoices}
         />
       )}
