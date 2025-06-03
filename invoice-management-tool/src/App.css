@@ -317,7 +317,7 @@ button[type="submit"]:hover {
   box-shadow: inset 5px 5px 10px #2b6b15, inset -5px -5px 10px #77e054;
 }
 
-button[type="cancel"] {
+button[type="cancel"]{
   background-color: #af3030;
   color: #fafafa;
 }

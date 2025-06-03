@@ -36,7 +36,7 @@ export default function Navbar() {
 
           <div className="profile-wrapper">
             <div className="email-container" onClick={toggleDropdown}>
-              <span>{user.email}</span>
+              <span className="email">{user.email}</span>
               <ChevronDownIcon className="chevron-icon"/>
             </div>
 
