@@ -84,6 +84,16 @@ td {
   border-bottom: 1px solid #e0e0e0;
 }
 
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.205); /* subtle dark overlay */
+  cursor: pointer;
+}
+
+
 th {
   font-weight: 600;
   font-size: 1rem;
