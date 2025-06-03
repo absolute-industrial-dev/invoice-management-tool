@@ -5,7 +5,7 @@
   line-height: 24px;
   font-weight: 400;
 
-  color: #0f0f0f;
+  color: #2c2c2c;
   background-color: #f6f6f6;
 
   font-synthesis: none;
@@ -69,10 +69,6 @@ input:focus {
   box-shadow: inset 5px 5px 10px #9f9f9f, inset -5px -5px 10px #ffffff;
 }
 
-.nav-container {
-  background: linear-gradient(145deg, #ffffff, #e6e6e6);
-  box-shadow: 10px 10px 12px #c7c7c7, -10px -10px 12px #ffffff;
-}
 
 table {
   width: 100%;
@@ -147,11 +143,6 @@ html.dark button:hover {
 html.dark button:active {
   background: #181818;
   box-shadow: inset 5px 5px 10px #0a0a0a, inset -5px -5px 10px #222222;
-}
-
-html.dark .nav-container {
-  background: linear-gradient(145deg, #101010, #070707);
-  box-shadow: 10px 10px 12px #0a0a0a, -10px -10px 12px #222222;
 }
 
 html.dark {
