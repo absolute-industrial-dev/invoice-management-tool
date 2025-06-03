@@ -6,7 +6,6 @@ import Loading from "../../utilities/loading/loading";
 export default function AddModal({
   isOpen,
   onClose,
-  statuses,
   reloadInvoices,
 }) {
   const [formState, setFormState] = useState({});
@@ -86,24 +85,6 @@ export default function AddModal({
         <h2 id="modal-title">Add New Invoice</h2>
         <div className="modal-scroll-content">
           <form onSubmit={handleSubmit} className="form">
-            <label htmlFor="status">
-              Status:
-              <select
-                id="status"
-                name="status"
-                value={formState.status || ""}
-                onChange={handleChange}
-                aria-required="true"
-                aria-label="File Status"
-              >
-                {statuses.map((status) => (
-                  <option key={status} value={status}>
-                    {status}
-                  </option>
-                ))}
-              </select>
-            </label>
-
             <label htmlFor="po_number">
               PO Number:
               <input
