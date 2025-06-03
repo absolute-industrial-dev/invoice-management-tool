@@ -321,13 +321,9 @@ button[type="cancel"] {
   color: #fafafa;
 }
 
-button[type="cancel"]:active {
+button[type="cancel"]:hover {
   background: #c73232;
   box-shadow: inset 5px 5px 10px #641919, inset -5px -5px 10px #ff4b4b;
-}
-
-button[type="cancel"]:hover {
-  background-color: #af3030;
 }
 
 html.dark button[type="submit"] {
