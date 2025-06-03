@@ -2,12 +2,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  background: linear-gradient(145deg, #ffffff, #e6e6e6);
-  box-shadow: 10px 10px 12px #c7c7c7, -10px -10px 12px #ffffff;
+  justify-content: space-between;
+  background-color: #51913c;
   height: 80px;
   gap: 10px;
-  padding: 0 10px;
+}
+
+.nav-right-section {
+  display: flex;
+  align-items: center;
 }
 
 .icon-email-container {
@@ -16,18 +19,64 @@
   margin-right: auto;
 }
 
+.chevron-icon{
+  width: 20px;
+}
+
 .logo-container {
   margin: 0;
+  display: flex;
+  align-items: center;
 }
 .logo-icon {
-  margin-top: 20px;
   width: 100px;
+  background-color: white;
+  padding: 0px 30px;
 }
+
+.profile-wrapper{
+  position: relative;
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  box-shadow:  5px 5px 10px #3c6b2c,
+             -5px -5px 10px #66b74c;
+  color: #f6f6f6;
+  margin-right: 10px;
+}
+
+.profile-wrapper:hover{
+  box-shadow: inset 5px 5px 10px #3c6b2c,
+            inset -5px -5px 10px #66b74c;
+}
+
+.profile-wrapper span{
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
 .email-container {
-  margin: 20px;
   right: auto;
-  padding-top: 15px;
   font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  border-radius: 23px;
+  z-index: 1000;
+  width: 170px;
+  background-color: #51913c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttons-container {
@@ -123,33 +172,32 @@
   cursor: pointer;
   transition: all 0.3s;
   background-color: #af3030;
+  box-shadow:  5px 5px 10px #3c6b2c,
+             -5px -5px 10px #66b74c;
   margin-right: auto;
 }
 
-.logout-button:active {
-  background: #c73232;
-  box-shadow: inset 5px 5px 10px #641919, inset -5px -5px 10px #ff4b4b;
-}
-
 .logout-button:hover {
-  background-color: #af3030;
+  background: #af3030;
+  box-shadow: inset 5px 5px 13px #6e1e1e,
+              inset -5px -5px 13px #f04242;
 }
 
 html.dark .logout-button {
-  background-color: #5c1d1d;
   color: #ffffff;
-  box-shadow: 5px 5px 10px #1a0a0a, -5px -5px 10px #7a2a2a;
+  background: #5c1d1d;
+  box-shadow:  5px 5px 10px #3c6b2c,
+             -5px -5px 10px #66b74c;
   transition: all 0.3s ease;
 }
 
 html.dark .logout-button:hover {
-  background-color: #712222;
+  background-color: #992828;
+  box-shadow: inset 5px 5px 10px #441515,
+            inset -5px -5px 10px #742525;;
 }
 
-html.dark .logout-button:active {
-  background-color: #992828;
-  box-shadow: inset 5px 5px 10px #3a1212, inset -5px -5px 10px #c74444;
-}
+
 
 @media (max-width: 500px) {
   .nav-container {

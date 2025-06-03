@@ -28,7 +28,7 @@ export default function Login() {
     <main className="container">
       {/* Logo animation: center fade-in, then move to top */}
       
-      <ThemeToggle/>
+      <ThemeToggle className="theme-login"/>
       <motion.img
         src={aisiLogo}
         alt="AISI Logo"

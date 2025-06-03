@@ -33,6 +33,13 @@ export default function AddModal({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    const numericFields = ["po_number", "si_number", "dr_number", "net_amount", "gross_amount"];
+
+    if (numericFields.includes(name)) {
+      const isValid = /^\d*\.?\d*$/.test(value);
+      if (!isValid) return;
+    }
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -96,6 +103,7 @@ export default function AddModal({
                 ref={firstInputRef}
                 aria-required="true"
                 aria-label="Purchase Order Number"
+                required
               />
             </label>
 
@@ -109,6 +117,7 @@ export default function AddModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Sales Invoice Number"
+                required
               />
             </label>
 
@@ -122,6 +131,7 @@ export default function AddModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Debit Number"
+                required
               />
             </label>
 
@@ -135,6 +145,7 @@ export default function AddModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Net Amount"
+                required
               />
             </label>
 
@@ -148,6 +159,7 @@ export default function AddModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Gross Amount"
+                required
               />
             </label>
 
@@ -161,6 +173,7 @@ export default function AddModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Invoice Date"
+                required
               />
             </label>
 
@@ -174,6 +187,7 @@ export default function AddModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Company Name"
+                required
               />
             </label>
 

@@ -1,35 +1,31 @@
-.theme-toggle {
-  position: absolute;
-  top: 1.5rem; /* top-6 */
-  right: 1.5rem; /* right-6 */
-  z-index: 50;
-}
-
-.theme-toggle-button {
-  width: 4rem; /* w-16 */
-  height: 2rem; /* h-8 */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 9999px; /* rounded-full */
-  display: flex;
-  align-items: center;
-  padding: 0.25rem; /* p-1 */
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease;
-}
-
-.theme-toggle-button.dark {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.theme-toggle-indicator {
-  position: absolute;
-  left: 0.25rem; /* left-1 */
-  top: 0.25rem; /* top-1 */
-  width: 1.5rem; /* w-6 */
-  height: 1.5rem; /* h-6 */
-  border-radius: 9999px;
+.theme-toggle-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 30px;
+  box-shadow:  5px 5px 10px #3c6b2c,
+             -5px -5px 10px #66b74c;
+  color: yellow;
+}
+
+.theme-toggle-icon:hover{
+  box-shadow: inset 5px 5px 10px #3c6b2c,
+            inset -5px -5px 10px #66b74c;
+}
+
+html.dark .theme-toggle-icon{
+  background: transparent;
+  box-shadow:  5px 5px 10px #3c6b2c,
+             -5px -5px 10px #66b74c;
+}
+
+html.dark .theme-toggle-icon:hover{
+  background: transparent;
+  box-shadow: inset 5px 5px 10px #3c6b2c,
+            inset -5px -5px 10px #66b74c;
 }
