@@ -3,9 +3,19 @@ import Main from "./pages/main/Main";
 import Login from "./pages/login/Login";
 import { useAuth } from "./hooks/useAuth";
 import "./App.css";
+import { useEffect } from "react";
+import { monitorDueDate } from "./lib/invoiceService";
 
 export default function App() {
   const { user, loading } = useAuth();
+
+  useEffect(() => {
+    const checkDueDate = async () => {
+      await monitorDueDate();
+    };
+
+    checkDueDate();
+  }, []);
 
   if (loading) return <p>Loading...</p>;
 
