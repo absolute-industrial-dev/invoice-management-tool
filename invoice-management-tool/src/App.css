@@ -95,6 +95,10 @@ th {
 }
 
 select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
   border: none;
   border-radius: 23px;
   padding: 14px;
@@ -103,10 +107,20 @@ select {
   font-size: 1em;
   font-weight: 600;
   color: #2c2c2c;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='%23000000' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 10px 6px;
 }
 
 select:hover {
   box-shadow: inset 5px 5px 10px #9f9f9f, inset -5px -5px 10px #ffffff;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='%23000000' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 10px 6px;
 }
 
 option {
@@ -169,11 +183,21 @@ html.dark select {
   background: #1c1c1c;
   box-shadow: 5px 5px 10px #0f0f0f, -5px -5px 10px #292929;
   color: #f6f6f6;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='%23ffffff' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 10px 6px;
 }
 
 html.dark select:hover {
   background: #181818;
   box-shadow: inset 5px 5px 10px #0a0a0a, inset -5px -5px 10px #222222;
+
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='%23ffffff' d='M0 0l5 6 5-6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 10px 6px;
 }
 
 html.dark option {
