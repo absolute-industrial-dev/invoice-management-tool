@@ -11,6 +11,7 @@ import {
 import EditModal from "../editmodal/EditModal";
 import ExportToExcel from "../export-to-excel/ExportToExcel";
 import AddModal from "../addmodal/AddModal";
+import FilterByDate from "../filterby-date/FilterByDate";
 
 export default function Table() {
   const [invoices, setInvoices] = useState([]);
@@ -22,6 +23,8 @@ export default function Table() {
   const [hasMore, setHasMore] = useState(false);
   const [columnOrder, setColumnOrder] = useState(true);
   const [paidStatus, setPaidStatus] = useState({});
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const headers = [
     "PO Number",
@@ -151,7 +154,19 @@ export default function Table() {
             {" "}
             Sort By: {columnOrder ? "Asc" : "Desc"}
           </button>
-          <ExportToExcel data={invoices} />
+          <FilterByDate
+            startDate={startDate}
+            endDate={endDate}
+            setStartDate={setStartDate}
+            setEndDate={setEndDate}
+          />
+
+          <button>Status</button>
+          <ExportToExcel
+            data={invoices}
+            startDate={startDate}
+            endDate={endDate}
+          />
         </div>
         <div className="pagination">
           <button
@@ -260,7 +275,9 @@ export default function Table() {
                           toggleIsPaid(invoice.id, e.target.checked)
                         }
                       />
-                      <label htmlFor="is_paid" className="isPaid-label">Is Paid?</label>
+                      <label htmlFor="is_paid" className="isPaid-label">
+                        Is Paid?
+                      </label>
                     </>
                   )}
                 </div>
