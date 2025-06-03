@@ -301,13 +301,9 @@ button[type="submit"] {
   color: #fafafa;
 }
 
-button[type="submit"]:active {
+button[type="submit"]:hover {
   background: #45ad22;
   box-shadow: inset 5px 5px 10px #2b6b15, inset -5px -5px 10px #77e054;
-}
-
-button[type="submit"]:hover {
-  background-color: #35811b;
 }
 
 button[type="cancel"] {
@@ -325,16 +321,12 @@ button[type="cancel"]:hover {
 }
 
 html.dark button[type="submit"] {
-  background-color: #2e7d19;
-  color: #fafafa;
-  box-shadow: 5px 5px 10px #1b4910, -5px -5px 10px #3fae24;
+  color: white;
+  background: #317a18;
+  box-shadow: 12px 12px 24px #0f0f0f, -12px -12px 24px #292929;
 }
 
 html.dark button[type="submit"]:hover {
-  background-color: #256517;
-}
-
-html.dark button[type="submit"]:active {
   background: #2e7d19;
   box-shadow: inset 5px 5px 10px #1c4e10, inset -5px -5px 10px #4dde28;
 }
