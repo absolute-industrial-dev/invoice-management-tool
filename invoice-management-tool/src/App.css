@@ -317,12 +317,12 @@ button[type="submit"]:hover {
   box-shadow: inset 5px 5px 10px #2b6b15, inset -5px -5px 10px #77e054;
 }
 
-button[type="cancel"]{
+button[type="cancel"], .logout-button{
   background-color: #af3030;
   color: #fafafa;
 }
 
-button[type="cancel"]:hover {
+button[type="cancel"]:hover, .logout-button:hover {
   background: #c73232;
   box-shadow: inset 5px 5px 10px #641919, inset -5px -5px 10px #ff4b4b;
 }
@@ -344,7 +344,14 @@ html.dark button[type="cancel"] {
   box-shadow: 12px 12px 24px #0f0f0f, -12px -12px 24px #292929;
 }
 
-html.dark button[type="cancel"]:hover {
+html.dark .logout-button{
+  color: #ffffff;
+  background: #8c2a2a;
+  box-shadow:  5px 5px 10px #3c6b2c,
+             -5px -5px 10px #66b74c;
+}
+
+html.dark button[type="cancel"]:hover, html.dark .logout-button:hover {
   background: #a82e2e;
   box-shadow: inset 5px 5px 10px #531919, inset -5px -5px 10px #e24c4c;
 }
