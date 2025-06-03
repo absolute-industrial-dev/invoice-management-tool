@@ -101,3 +101,21 @@ export async function addNewInvoice(formStateData) {
 
   return true;
 }
+
+export async function fetchExcelInvoices(status, startDate, endDate) {
+  try {
+    const { data, error } = await supabase
+      .from("invoices")
+      .select("*")
+      .eq("status", status)
+      .gte("invoice_date", startDate.toISOString())
+      .lte("invoice_date", endDate.toISOString());
+
+    if (error) throw error;
+
+    return {data};
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}
