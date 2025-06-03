@@ -3,11 +3,7 @@ import { addNewInvoice } from "../../lib/invoiceService";
 import "./AddModal.css";
 import Loading from "../../utilities/loading/loading";
 
-export default function AddModal({
-  isOpen,
-  onClose,
-  reloadInvoices,
-}) {
+export default function AddModal({ isOpen, onClose, reloadInvoices }) {
   const [formState, setFormState] = useState({});
   const modalRef = useRef(null);
   const firstInputRef = useRef(null);
@@ -128,30 +124,42 @@ export default function AddModal({
               />
             </label>
 
-            <label htmlFor="net_amount">
-              Net Amount:
+            <label htmlFor="tin_number">
+              TIN:
               <input
-                id="net_amount"
+                id="tin_number"
                 type="text"
-                name="net_amount"
-                value={formState.net_amount || ""}
+                name="tin_number"
+                value={formState.tin_number || ""}
                 onChange={handleChange}
                 aria-required="true"
-                aria-label="Net Amount"
+                aria-label="Tax Identification Number"
                 required
               />
             </label>
 
-            <label htmlFor="gross_amount">
-              Gross Amount:
-              <input
-                id="gross_amount"
-                type="text"
-                name="gross_amount"
-                value={formState.gross_amount || ""}
+            <label htmlFor="address">
+              Address:
+              <textarea
+                id="address"
+                name="address"
+                value={formState.address || ""}
                 onChange={handleChange}
                 aria-required="true"
-                aria-label="Gross Amount"
+                aria-label="Address"
+              />
+            </label>
+
+            <label htmlFor="company_name">
+              Company Name:
+              <input
+                id="company_name"
+                type="text"
+                name="company_name"
+                value={formState.company_name || ""}
+                onChange={handleChange}
+                aria-required="true"
+                aria-label="Company Name"
                 required
               />
             </label>
@@ -170,16 +178,30 @@ export default function AddModal({
               />
             </label>
 
-            <label htmlFor="company_name">
-              Company Name:
+            <label htmlFor="gross_amount">
+              Gross Amount:
               <input
-                id="company_name"
+                id="gross_amount"
                 type="text"
-                name="company_name"
-                value={formState.company_name || ""}
+                name="gross_amount"
+                value={formState.gross_amount || ""}
                 onChange={handleChange}
                 aria-required="true"
-                aria-label="Company Name"
+                aria-label="Gross Amount"
+                required
+              />
+            </label>
+
+            <label htmlFor="net_amount">
+              Net Amount:
+              <input
+                id="net_amount"
+                type="text"
+                name="net_amount"
+                value={formState.net_amount || ""}
+                onChange={handleChange}
+                aria-required="true"
+                aria-label="Net Amount"
                 required
               />
             </label>
@@ -197,7 +219,7 @@ export default function AddModal({
 
             <div className="form-buttons">
               <button type="submit" className="sub-btn">
-                {isLoading ? <Loading/> : <>Save</>}
+                {isLoading ? <Loading /> : <>Save</>}
               </button>
               <button type="cancel" onClick={onClose}>
                 Cancel
