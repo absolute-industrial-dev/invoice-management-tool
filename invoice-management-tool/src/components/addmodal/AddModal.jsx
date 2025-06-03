@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { addNewInvoice } from "../../lib/invoiceService";
 import "./AddModal.css";
 import Loading from "../../utilities/loading/loading";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function AddModal({
   isOpen,
@@ -58,7 +59,8 @@ export default function AddModal({
       reloadInvoices();
       setisLoading(false);
       onClose();
-    }
+      toast.success("Saved Successfully!")
+    } 
 
     setisLoading(false);
   };
