@@ -56,6 +56,10 @@ select {
   flex-direction: column;
 }
 
+.sub-btn {
+  height: 50px;
+}
+
 .modal-scroll-content {
   overflow-y: auto;
   overflow-x: hidden;
