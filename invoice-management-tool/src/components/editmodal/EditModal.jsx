@@ -168,20 +168,6 @@ export default function EditModal({
               />
             </label>
 
-            <label htmlFor="net_amount">
-              Net Amount:
-              <input
-                id="net_amount"
-                type="text"
-                name="net_amount"
-                value={formState.net_amount || ""}
-                onChange={handleChange}
-                aria-required="true"
-                aria-label="Net Amount"
-                required
-              />
-            </label>
-
             <label htmlFor="gross_amount">
               Gross Amount:
               <input
@@ -192,6 +178,20 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Gross Amount"
+                required
+              />
+            </label>
+
+            <label htmlFor="net_amount">
+              Net Amount:
+              <input
+                id="net_amount"
+                type="text"
+                name="net_amount"
+                value={formState.net_amount || ""}
+                onChange={handleChange}
+                aria-required="true"
+                aria-label="Net Amount"
                 required
               />
             </label>
@@ -217,6 +217,7 @@ export default function EditModal({
                 name="due_date"
                 value={dueDate}
                 onChange={handleChange}
+                disabled="true"
                 aria-required="true"
                 aria-label="Due Date"
               />
@@ -247,85 +248,6 @@ export default function EditModal({
                 aria-label="Company Name"
                 required
               />
-            </label>
-
-            <label htmlFor="description">
-              Description:
-              <textarea
-                id="description"
-                name="description"
-                value={formState.description || ""}
-                onChange={handleChange}
-                aria-required="true"
-                aria-label="Description"
-              />
-            </label>
-
-            <label htmlFor="address">
-              Address:
-              <textarea
-                id="address"
-                name="address"
-                value={formState.address || ""}
-                onChange={handleChange}
-                aria-required="true"
-                aria-label="Address"
-              />
-            </label>
-
-            <label htmlFor="wo_ewt">
-              Without EWT
-              <input
-                type="text"
-                name="wo_ewt"
-                value={formState.wo_ewt || ""}
-                onChange={handleChange}
-                aria-required="true"
-                aria-label="Without EWT"
-              />
-            </label>
-
-            <label htmlFor="ewt">
-              EWT
-              <input
-                id="ewt"
-                type="text"
-                name="ewt"
-                value={formState.ewt || ""}
-                onChange={handleChange}
-                aria-label="EWT"
-              />
-            </label>
-
-            <label htmlFor="counterchecking_ewt">
-              Counterchecking EWT
-              <input
-                id="counterchecking_ewt"
-                type="text"
-                name="counterchecking_ewt"
-                value={formState.counterchecking_ewt || ""}
-                onChange={handleChange}
-                aria-label="Counterchecking EWT"
-              />
-            </label>
-
-            <label htmlFor="is_service">
-              Is Service?
-              <div className="check-container">
-                <input
-                  id="is_service"
-                  type="checkbox"
-                  name="is_service"
-                  checked={!!formState.is_service}
-                  onChange={(e) =>
-                    setFormState((prev) => ({
-                      ...prev,
-                      is_service: e.target.checked,
-                    }))
-                  }
-                  aria-label="Is Service"
-                />
-              </div>
             </label>
 
             <label htmlFor="agent">
@@ -370,15 +292,59 @@ export default function EditModal({
               </select>
             </label>
 
-            <label htmlFor="or_number">
-              OR Number:
+            <label htmlFor="is_service">
+              Is Service?
+              <div className="check-container">
+                <input
+                  id="is_service"
+                  type="checkbox"
+                  name="is_service"
+                  checked={!!formState.is_service}
+                  onChange={(e) =>
+                    setFormState((prev) => ({
+                      ...prev,
+                      is_service: e.target.checked,
+                    }))
+                  }
+                  aria-label="Is Service"
+                />
+              </div>
+            </label>
+
+            <label htmlFor="wo_ewt">
+              Without EWT
               <input
-                id="or_number"
                 type="text"
-                name="or_number"
-                value={formState.or_number || ""}
+                name="wo_ewt"
+                value={formState.wo_ewt || ""}
                 onChange={handleChange}
-                aria-label="Official Receipt Number"
+                disabled="true"
+                aria-required="true"
+                aria-label="Without EWT"
+              />
+            </label>
+
+            <label htmlFor="ewt">
+              EWT
+              <input
+                id="ewt"
+                type="text"
+                name="ewt"
+                value={formState.ewt || ""}
+                onChange={handleChange}
+                aria-label="EWT"
+              />
+            </label>
+
+            <label htmlFor="counterchecking_ewt">
+              Counterchecking EWT
+              <input
+                id="counterchecking_ewt"
+                type="text"
+                name="counterchecking_ewt"
+                value={formState.counterchecking_ewt || ""}
+                onChange={handleChange}
+                aria-label="Counterchecking EWT"
               />
             </label>
 
@@ -391,6 +357,42 @@ export default function EditModal({
                 value={formState.bank_deposited || ""}
                 onChange={handleChange}
                 aria-label="Bank Deposited"
+              />
+            </label>
+
+            <label htmlFor="or_number">
+              OR Number:
+              <input
+                id="or_number"
+                type="text"
+                name="or_number"
+                value={formState.or_number || ""}
+                onChange={handleChange}
+                aria-label="Official Receipt Number"
+              />
+            </label>
+
+            <label htmlFor="address">
+              Address:
+              <textarea
+                id="address"
+                name="address"
+                value={formState.address || ""}
+                onChange={handleChange}
+                aria-required="true"
+                aria-label="Address"
+              />
+            </label>
+
+            <label htmlFor="description">
+              Description:
+              <textarea
+                id="description"
+                name="description"
+                value={formState.description || ""}
+                onChange={handleChange}
+                aria-required="true"
+                aria-label="Description"
               />
             </label>
 

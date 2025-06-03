@@ -42,13 +42,13 @@ select {
 
 .modal-container label.full-width,
 .modal-container .form-buttons {
-  grid-column: span 2;
+  grid-column: span 5;
 }
 
 .modal-container {
   background: #eeeeee;
   border-radius: 20px;
-  width: 45%;
+  width: 90%;
   max-height: 90vh;
   overflow: hidden; /* Keeps the radius intact */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
