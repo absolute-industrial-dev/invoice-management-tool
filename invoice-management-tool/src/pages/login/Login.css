@@ -114,3 +114,27 @@ label {
   gap: 10px;
   margin-bottom: 5px;
 }
+
+button{
+  margin: 20px !important;
+}
+
+.theme-login {
+  box-shadow: 5px 5px 10px #9f9f9f, -5px -5px 10px #ffffff;
+  color: #3c6b2c;
+}
+
+.theme-login:hover{
+  background: #e0e0e0;
+  box-shadow: inset 5px 5px 10px #9f9f9f, inset -5px -5px 10px #ffffff;
+}
+
+html.dark .theme-login{
+  background: #1c1c1c;
+  box-shadow: 5px 5px 10px #0f0f0f, -5px -5px 10px #292929;
+}
+
+html.dark .theme-login:hover{
+  background: #181818;
+  box-shadow: inset 5px 5px 10px #0a0a0a, inset -5px -5px 10px #222222;
+}

@@ -35,6 +35,19 @@ export default function EditModal({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    const numericField = [
+      "po_number",
+      "si_number",
+      "dr_number",
+      "tin_number",
+      "net_amount",
+      "gross_amount",
+    ];
+
+    if (numericField.includes(name)) {
+      const isValid = /^\d*\.?\d*$/.test(value);
+      if (!isValid) return;
+    }
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -102,6 +115,7 @@ export default function EditModal({
                 ref={firstInputRef}
                 aria-required="true"
                 aria-label="Purchase Order Number"
+                required
               />
             </label>
 
@@ -115,6 +129,7 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Sales Invoice Number"
+                required
               />
             </label>
 
@@ -128,6 +143,7 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Debit Number"
+                required
               />
             </label>
 
@@ -154,6 +170,7 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Net Amount"
+                required
               />
             </label>
 
@@ -167,6 +184,7 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Gross Amount"
+                required
               />
             </label>
 
@@ -219,6 +237,7 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Company Name"
+                required
               />
             </label>
 

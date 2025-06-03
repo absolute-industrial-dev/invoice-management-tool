@@ -1,33 +1,60 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import "./Navbar.css";
 import mainLogo from "../../assets/pictures/absolute-logo.png";
 import { FiLogOut } from "react-icons/fi";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import ThemeToggle from "../themetoggle/Theme";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
 
   const handleLogout = () => {
     logout();
+    setIsDropdownOpen(false);
   };
 
   return (
     <nav className="nav-container">
       <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <div className="icon-email-container">
+
         <div className="logo-container">
           <img src={mainLogo} alt="logo" className="logo-icon" />
         </div>
-        <div className="email-container">
-          {user ? <span>{user.email}</span> : <span></span>}
+
+        {user && (
+        <div className="nav-right-section">
+          <ThemeToggle className="theme-icon" />
+
+          <div className="profile-wrapper">
+            <div className="email-container" onClick={toggleDropdown}>
+              <span>{user.email}</span>
+              <ChevronDownIcon className="chevron-icon"/>
+            </div>
+
+            {isDropdownOpen && (
+              <div className="dropdown-menu">
+                <button onClick={handleLogout} className="logout-button">
+                  <FiLogOut size={18} />
+                  <span>Log out</span>
+                </button>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-      <div className="home-wrapper">
+      )}
+
+
+
+      {/* <div className="home-wrapper">
         <button to="/main" className="home-container">
           Home
           <div className="inner-button">
@@ -50,20 +77,13 @@ export default function Navbar() {
             </svg>
           </div>
         </button>
-      </div>
-      <div className="logout-container">
-        {user ? (
-          <>
-            <button onClick={logout} className="logout-button">
-              <FiLogOut size={23} />
-              <span>Log out</span>
-            </button>
-          </>
-        ) : (
+      </div> */}
+
+      {!user && (
+        <div className="logout-container">
           <Link to="/">Login</Link>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 }
-
