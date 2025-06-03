@@ -184,27 +184,6 @@
   margin-right: auto;
 }
 
-.logout-button:hover {
-  background: #af3030;
-  box-shadow: inset 5px 5px 13px #6e1e1e,
-              inset -5px -5px 13px #f04242;
-}
-
-html.dark .logout-button {
-  color: #ffffff;
-  background: #5c1d1d;
-  box-shadow:  5px 5px 10px #3c6b2c,
-             -5px -5px 10px #66b74c;
-  transition: all 0.3s ease;
-}
-
-html.dark .logout-button:hover {
-  background-color: #992828;
-  box-shadow: inset 5px 5px 10px #441515,
-            inset -5px -5px 10px #742525;;
-}
-
-
 
 @media (max-width: 500px) {
   .nav-container {
