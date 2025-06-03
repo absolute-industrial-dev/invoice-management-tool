@@ -12,6 +12,7 @@ import EditModal from "../editmodal/EditModal";
 import ExportToExcel from "../export-to-excel/ExportToExcel";
 import AddModal from "../addmodal/AddModal";
 import FilterByDate from "../filterby-date/FilterByDate";
+import FilterByStatus from "../filterby-status/FilterByStatus";
 
 export default function Table() {
   const [invoices, setInvoices] = useState([]);
@@ -23,8 +24,9 @@ export default function Table() {
   const [hasMore, setHasMore] = useState(false);
   const [columnOrder, setColumnOrder] = useState(true);
   const [paidStatus, setPaidStatus] = useState({});
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [status, setStatus] = useState("");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const headers = [
     "PO Number",
@@ -154,16 +156,15 @@ export default function Table() {
             {" "}
             Sort By: {columnOrder ? "Asc" : "Desc"}
           </button>
+          <FilterByStatus status={status} setStatus={setStatus} />
           <FilterByDate
             startDate={startDate}
             endDate={endDate}
             setStartDate={setStartDate}
             setEndDate={setEndDate}
           />
-
-          <button>Status</button>
           <ExportToExcel
-            data={invoices}
+            status={status}
             startDate={startDate}
             endDate={endDate}
           />

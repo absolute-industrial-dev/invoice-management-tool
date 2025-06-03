@@ -108,8 +108,8 @@ export async function fetchExcelInvoices(status, startDate, endDate) {
       .from("invoices")
       .select("*")
       .eq("status", status)
-      .gte("invoice_date", startDate.toISOString())
-      .lte("invoice_date", endDate.toISOString());
+      .gte("invoice_date", startDate)
+      .lte("invoice_date", endDate);
 
     if (error) throw error;
 
