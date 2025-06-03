@@ -27,35 +27,18 @@ export default function ThemeToggle({ className = '' }) {
   }, [isDarkMode]);
 
   return (
-     <div className={`theme-toggle ${className}`}>
-      <motion.button
-        onClick={() => setIsDarkMode(!isDarkMode)}
-        className={`theme-toggle-button ${isDarkMode ? 'dark' : ''}`}
-        initial={{ opacity: 0, y: -10 }}
-        animate={{
-          opacity: 1,
-          y: 0,
-          backgroundColor: isDarkMode ? '#1f2937' : '#facc15',
-        }}
-        transition={{ duration: 0.5 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <motion.div
-          className="theme-toggle-indicator"
-          animate={{
-            x: isDarkMode ? 0 : 32,
-            backgroundColor: isDarkMode ? '#d1d5db' : '#fef3c7',
-          }}
-          transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-        >
-          {isDarkMode ? (
-            <MoonIcon className="h-4 w-4 text-black" />
-          ) : (
-            <SunIcon className="h-4 w-4 text-yellow-600" />
-          )}
-        </motion.div>
-      </motion.button>
-    </div>
+    <motion.button
+      onClick={() => setIsDarkMode(!isDarkMode)}
+      className={`theme-toggle-icon ${className}`}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      transition={{ type: 'spring', stiffness: 300 }}
+    >
+      {isDarkMode ? (
+        <MoonIcon className="h-6 w-6 text-gray-200" />
+      ) : (
+        <SunIcon className="h-6 w-6 text-yellow-500" />
+      )}
+    </motion.button>
   );
 }
