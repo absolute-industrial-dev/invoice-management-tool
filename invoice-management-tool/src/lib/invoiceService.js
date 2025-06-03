@@ -104,16 +104,31 @@ export async function addNewInvoice(formStateData) {
 
 export async function fetchExcelInvoices(status, startDate, endDate) {
   try {
-    const { data, error } = await supabase
-      .from("invoices")
-      .select("*")
-      .eq("status", status)
-      .gte("invoice_date", startDate)
-      .lte("invoice_date", endDate);
+    const offset = 0;
+    const limit = 1000;
+    const invoices = [];
 
-    if (error) throw error;
+    while (true) {
+      const { data, error } = await supabase
+        .from("invoices")
+        .select("*")
+        .eq("status", status)
+        .gte("invoice_date", startDate)
+        .lte("invoice_date", endDate)
+        .range(offset, offset + limit - 1);
 
-    return { data };
+      if (error) throw error;
+
+      if (!data || data.length === 0) break;
+
+      data.forEach((invoice) => {
+        invoices.push(invoice);
+      });
+
+      if (data.length < limit) break;
+    }
+
+    return { data: invoices };
   } catch (error) {
     console.error(error);
     return error;
