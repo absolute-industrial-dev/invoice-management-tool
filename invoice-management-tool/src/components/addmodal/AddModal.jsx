@@ -1,18 +1,45 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { addNewInvoice } from "../../lib/invoiceService";
 import "./AddModal.css";
 
-export default function AddModal({ isOpen, onClose, statuses, reloadInvoices }) {
+export default function AddModal({
+  isOpen,
+  onClose,
+  statuses,
+  reloadInvoices,
+}) {
   const [formState, setFormState] = useState({});
+  const modalRef = useRef(null);
+  const firstInputRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
       setFormState({});
+
+      setTimeout(() => {
+        firstInputRef.current?.focus();
+      }, 0);
+
+      const handleKeyDown = (e) => {
+        if (e.key === "Escape") {
+          onClose();
+        }
+      };
+
+      document.addEventListener("keydown", handleKeyDown);
+      return () => document.removeEventListener("keydown", handleKeyDown);
     }
   }, [isOpen]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    const numericFields = ["po_number", "si_number", "dr_number", "net_amount", "gross_amount"];
+
+    if (numericFields.includes(name)) {
+      const isValid = /^\d*\.?\d*$/.test(value);
+      if (!isValid) return;
+    }
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -32,17 +59,30 @@ export default function AddModal({ isOpen, onClose, statuses, reloadInvoices }) 
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-container">
-        <h2>Add New Invoice</h2>
+    <div
+      className="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      onClick={onClose}
+    >
+      <div
+        className="modal-container"
+        ref={modalRef}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h2 id="modal-title">Add New Invoice</h2>
         <div className="modal-scroll-content">
           <form onSubmit={handleSubmit} className="form">
-            <label>
+            <label htmlFor="status">
               Status:
               <select
+                id="status"
                 name="status"
                 value={formState.status || ""}
                 onChange={handleChange}
+                aria-required="true"
+                aria-label="File Status"
               >
                 {statuses.map((status) => (
                   <option key={status} value={status}>
@@ -52,82 +92,113 @@ export default function AddModal({ isOpen, onClose, statuses, reloadInvoices }) 
               </select>
             </label>
 
-            <label>
+            <label htmlFor="po_number">
               PO Number:
               <input
+                id="po_number"
                 type="text"
                 name="po_number"
                 value={formState.po_number || ""}
                 onChange={handleChange}
+                ref={firstInputRef}
+                aria-required="true"
+                aria-label="Purchase Order Number"
+                required
               />
             </label>
 
-            <label>
+            <label htmlFor="si_number">
               SI Number:
               <input
+                id="si_number"
                 type="text"
                 name="si_number"
                 value={formState.si_number || ""}
                 onChange={handleChange}
+                aria-required="true"
+                aria-label="Sales Invoice Number"
+                required
               />
             </label>
 
-            <label>
+            <label htmlFor="dr_number">
               DR Number:
               <input
+                id="dr_number"
                 type="text"
                 name="dr_number"
                 value={formState.dr_number || ""}
                 onChange={handleChange}
+                aria-required="true"
+                aria-label="Debit Number"
+                required
               />
             </label>
 
-            <label>
+            <label htmlFor="net_amount">
               Net Amount:
               <input
+                id="net_amount"
                 type="text"
                 name="net_amount"
                 value={formState.net_amount || ""}
                 onChange={handleChange}
+                aria-required="true"
+                aria-label="Net Amount"
+                required
               />
             </label>
 
-            <label>
+            <label htmlFor="gross_amount">
               Gross Amount:
               <input
+                id="gross_amount"
                 type="text"
                 name="gross_amount"
                 value={formState.gross_amount || ""}
                 onChange={handleChange}
+                aria-required="true"
+                aria-label="Gross Amount"
+                required
               />
             </label>
 
-            <label>
+            <label htmlFor="invoice_date">
               Invoice Date:
               <input
+                id="invoice_date"
                 type="date"
                 name="invoice_date"
                 value={inputDate}
                 onChange={handleChange}
+                aria-required="true"
+                aria-label="Invoice Date"
+                required
               />
             </label>
 
-            <label>
+            <label htmlFor="company_name">
               Company Name:
               <input
+                id="company_name"
                 type="text"
                 name="company_name"
                 value={formState.company_name || ""}
                 onChange={handleChange}
+                aria-required="true"
+                aria-label="Company Name"
+                required
               />
             </label>
 
-            <label>
+            <label htmlFor="description">
               Description:
               <textarea
+                id="description"
                 name="description"
                 value={formState.description || ""}
                 onChange={handleChange}
+                aria-label="Purchase Description"
               />
             </label>
 
