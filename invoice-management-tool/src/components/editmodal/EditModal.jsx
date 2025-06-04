@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./EditModal.css";
-import { addNewInvoice } from "../../lib/invoiceService";
 import Loading from "../../utilities/loading/loading";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -10,13 +9,18 @@ export default function EditModal({
   invoiceData,
   onSave,
   statuses,
+  reloadInvoices,
 }) {
   const [formState, setFormState] = useState({});
   const modalRef = useRef(null);
   const firstInputRef = useRef(null);
   const [isLoading, setisLoading] = useState(false);
 
-  const form2307 = ["Without 2307", "With 2307", "On Hold"];
+  /* const form2307 = ["Without 2307", "With 2307", "Did not Withhold"]; */
+  const form2307 = useMemo(
+    () => ["Without 2307", "With 2307", "Did not Withhold"],
+    []
+  );
 
   useEffect(() => {
     if (invoiceData) {
@@ -28,6 +32,7 @@ export default function EditModal({
 
       const handleKeyDown = (e) => {
         if (e.key === "Escape") {
+          toast("Edits were not saved.", { icon: "⚠️" });
           onClose();
         }
       };
@@ -50,17 +55,33 @@ export default function EditModal({
 
     if (numericField.includes(name)) {
       const isValid = /^\d*\.?\d*$/.test(value);
-      if (!isValid) return;
+      if (!isValid) {
+        toast.error("Only numbers are allowed in this field.");
+        return;
+      }
     }
+
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setisLoading(true);
+    try {
+      await onSave(formState);
+      toast.success("Saved successfully!");
+      onClose();
+      reloadInvoices();
+    } catch (err) {
+      toast.error("Failed to save.");
+    } finally {
+      setisLoading(false);
+    }
+  };
 
-    const success = onSave(formState);
-    toast.success("Saved Successfully!");
+  const handleBackdropClick = () => {
+    toast("Edits were not saved.", { icon: "⚠️" });
+    onClose();
   };
 
   const invoiceDate = formState.invoice_date
@@ -83,7 +104,7 @@ export default function EditModal({
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      onClick={onClose}
+      onClick={handleBackdropClick}
     >
       <div
         className="modal-container"
@@ -308,18 +329,6 @@ export default function EditModal({
                   aria-label="Is Service"
                 />
               </div>
-            </label>
-
-            <label htmlFor="wo_ewt">
-              Without EWT
-              <input
-                type="text"
-                name="wo_ewt"
-                value={formState.wo_ewt || ""}
-                onChange={handleChange}
-                aria-required="true"
-                aria-label="Without EWT"
-              />
             </label>
 
             <label htmlFor="ewt">
