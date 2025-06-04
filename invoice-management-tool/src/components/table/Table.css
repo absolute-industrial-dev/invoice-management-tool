@@ -6,7 +6,6 @@
 
 .contain {
   display: flex;
-  gap: 2em;
   align-items: center;
   justify-content: center;
 }
