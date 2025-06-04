@@ -11,13 +11,18 @@
   width: auto;
 }
 
-.pagination {
+.left-side {
   display: flex;
   align-items: center;
   margin-left: auto;
 }
 
-.pagination button {
+.pagination{
+  display: flex;
+  align-items: center;
+}
+
+.pagination button{
   display: flex;
   margin: 0px 10px !important;
 }

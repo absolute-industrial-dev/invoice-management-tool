@@ -176,15 +176,7 @@ export default function Table() {
             setSearchBy={setSearchBy}
             className="searchby"
           />
-          <div className="addInvoice-container">
-            <button
-              aria-label="Add Invoice"
-              onClick={() => setIsModalOpen(true)}
-            >
-              {" "}
-              <PlusIcon className="icon" />
-            </button>
-          </div>
+
           <div className="sortBy-container">
             <button
               onClick={() => handleColumnOrder(searchBy)}
@@ -199,6 +191,20 @@ export default function Table() {
               )}
             </button>
           </div>
+
+          <div className="addInvoice-container">
+            <button
+              aria-label="Add Invoice"
+              onClick={() => setIsModalOpen(true)}
+            >
+              {" "}
+              <PlusIcon className="icon" />
+            </button>
+          </div>
+        </div>
+
+        <div className="left-side">
+
           <div className="export-dropdown-container" ref={dropdownRef}>
             <div className="export-dropdown">
               <button
@@ -271,10 +277,9 @@ export default function Table() {
             startDate={startDate}
             endDate={endDate}
           />
-        </div>
 
-        <div className="pagination">
-          <button
+          <div className="pagination">
+            <button
             onClick={previousPage}
             disabled={currentPage === 1}
             className="next-size"
@@ -324,6 +329,7 @@ export default function Table() {
               </svg>
             </div>
           </button>
+          </div>
         </div>
       </div>
       {invoices.length > 0 ? (
