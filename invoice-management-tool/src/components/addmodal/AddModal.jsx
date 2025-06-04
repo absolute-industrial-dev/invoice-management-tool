@@ -20,6 +20,7 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
 
       const handleKeyDown = (e) => {
         if (e.key === "Escape") {
+          toast("Invoice not added.", { icon: "⚠️" });
           onClose();
         }
       };
@@ -42,23 +43,36 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
 
     if (numericFields.includes(name)) {
       const isValid = /^\d*\.?\d*$/.test(value);
-      if (!isValid) return;
+      if (!isValid) {
+        toast.error("Only numbers are allowed in this field.");
+        return;
+      }
     }
+
     setFormState((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setisLoading(true);
-    const success = await addNewInvoice(formState);
-    if (success) {
-      reloadInvoices();
+    try {
+      const success = await addNewInvoice(formState);
+      if (success) {
+        reloadInvoices();
+        setisLoading(false);
+        onClose();
+        toast.success("Saved successfully!");
+      }
+    } catch (err) {
+      toast.error("Failed to save.");
+    } finally {
       setisLoading(false);
-      onClose();
-      toast.success("Saved successfully!")
-    } 
+    }
+  };
 
-    setisLoading(false);
+  const handleBackdropClick = () => {
+    toast("Invoice not added.", { icon: "⚠️" });
+    onClose();
   };
 
   const inputDate = formState.invoice_date
@@ -73,7 +87,7 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      onClick={onClose}
+      onClick={handleBackdropClick}
     >
       <div
         className="modal-container"
@@ -223,7 +237,7 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
               <button type="submit" className="sub-btn">
                 {isLoading ? <Loading /> : <>Save</>}
               </button>
-              <button type="cancel" onClick={onClose}>
+              <button type="cancel" onClick={handleBackdropClick}>
                 Cancel
               </button>
             </div>

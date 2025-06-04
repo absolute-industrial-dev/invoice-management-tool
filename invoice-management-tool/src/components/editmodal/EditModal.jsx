@@ -16,7 +16,6 @@ export default function EditModal({
   const firstInputRef = useRef(null);
   const [isLoading, setisLoading] = useState(false);
 
-  /* const form2307 = ["Without 2307", "With 2307", "Did not Withhold"]; */
   const form2307 = useMemo(
     () => ["Without 2307", "With 2307", "Did not Withhold"],
     []
@@ -424,7 +423,7 @@ export default function EditModal({
               <button type="submit" className="sub-btn">
                 {isLoading ? <Loading /> : <>Save</>}
               </button>
-              <button type="cancel" onClick={onClose}>
+              <button type="cancel" onClick={handleBackdropClick}>
                 Cancel
               </button>
             </div>
