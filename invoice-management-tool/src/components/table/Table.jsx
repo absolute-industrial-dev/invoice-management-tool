@@ -334,62 +334,70 @@ export default function Table() {
             ))}
           </tr>
         </thead>
-        <tbody>
-          {invoices.map((invoice) => (
-            <tr key={invoice.id}>
-              <td>{invoice.po_number}</td>
-              <td>{invoice.si_number}</td>
-              <td>{invoice.dr_number}</td>
-              <td>{invoice.net_amount}</td>
-              <td>{invoice.gross_amount}</td>
-              <td>
-                {new Date(invoice.invoice_date)
-                  .toLocaleDateString("en-GB", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "2-digit",
-                  })
-                  .replace(/\s/g, "-")}
-              </td>
-              <td>{invoice.company_name}</td>
-              <td>{invoice.description}</td>
-              <td>
-                <select
-                  value={invoice.status}
-                  onChange={(e) =>
-                    handleStatusChange(invoice.id, e.target.value)
-                  }
-                  className="searchby"
-                >
-                  {statuses.map((status) => (
-                    <option key={status} value={status}>
-                      {status}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td>
-                <div className="actions-container">
-                  <button onClick={() => openEditModal(invoice)}>Edit</button>
-                  {invoice.status !== "Sales Log" && (
-                    <>
-                      <input
-                        type="checkbox"
-                        checked={paidStatus[invoice.id] ?? invoice.is_paid}
-                        onChange={(e) =>
-                          toggleIsPaid(invoice.id, e.target.checked)
-                        }
-                      />
-                      <label htmlFor="is_paid" className="isPaid-label">
-                        Is Paid?
-                      </label>
-                    </>
-                  )}
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        {invoices.length > 0 ? (
+          <tbody>
+            {invoices.map((invoice) => (
+              <tr key={invoice.id}>
+                <td>{invoice.po_number}</td>
+                <td>{invoice.si_number}</td>
+                <td>{invoice.dr_number}</td>
+                <td>{invoice.net_amount}</td>
+                <td>{invoice.gross_amount}</td>
+                <td>
+                  {new Date(invoice.invoice_date)
+                    .toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "2-digit",
+                    })
+                    .replace(/\s/g, "-")}
+                </td>
+                <td>{invoice.company_name}</td>
+                <td>{invoice.description}</td>
+                <td>
+                  <select
+                    value={invoice.status}
+                    onChange={(e) =>
+                      handleStatusChange(invoice.id, e.target.value)
+                    }
+                    className="searchby"
+                  >
+                    {statuses.map((status) => (
+                      <option key={status} value={status}>
+                        {status}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td>
+                  <div className="actions-container">
+                    <button onClick={() => openEditModal(invoice)}>Edit</button>
+                    {invoice.status !== "Sales Log" && (
+                      <>
+                        <input
+                          type="checkbox"
+                          checked={paidStatus[invoice.id] ?? invoice.is_paid}
+                          onChange={(e) =>
+                            toggleIsPaid(invoice.id, e.target.checked)
+                          }
+                        />
+                        <label htmlFor="is_paid" className="isPaid-label">
+                          Is Paid?
+                        </label>
+                      </>
+                    )}
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        ) : (
+          <tbody>
+            <tr> 
+              <td className="defaultNoData">No invoices available.</td>
+              </tr>
+          </tbody>
+        )}
       </table>
       {selectedInvoice ? (
         <EditModal
