@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: auto;
 }
 
 .pagination {
@@ -23,7 +24,11 @@
 
 .right-container {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   gap: 1em;
+  width: auto;
   align-items: center;
   margin-right: auto;
 }
@@ -61,6 +66,29 @@
 .page-num {
   font-size: 17px;
   font-weight: bold;
+}
+
+.sortBy {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  align-items: center;
+}
+
+.arrow-icon {
+  margin-left: 5px;
+  width: 1.2em;
+  color: #45ad22;
+}
+
+.addInvoice-container button {
+  margin: 0 !important;
+  padding: auto;
+}
+
+.sortBy-container button {
+  margin: 0 !important;
+  padding: auto;
 }
 
 .actions-container {

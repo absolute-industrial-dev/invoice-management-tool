@@ -188,14 +188,14 @@ export default function Table() {
           <div className="sortBy-container">
             <button
               onClick={() => handleColumnOrder(searchBy)}
-              className="sortBy-container"
+              className="sortBy"
             >
               {" "}
               Sort By:{" "}
               {columnOrder ? (
-                <ArrowUpIcon className="icon" />
+                <ArrowUpIcon className="arrow-icon" />
               ) : (
-                <ArrowDownIcon className="icon" />
+                <ArrowDownIcon className="arrow-icon" />
               )}
             </button>
           </div>
