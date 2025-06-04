@@ -55,7 +55,7 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
       reloadInvoices();
       setisLoading(false);
       onClose();
-      toast.success("Saved Successfully!")
+      toast.success("Saved successfully!")
     } 
 
     setisLoading(false);
