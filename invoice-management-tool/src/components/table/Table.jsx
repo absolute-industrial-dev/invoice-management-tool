@@ -326,6 +326,7 @@ export default function Table() {
           </button>
         </div>
       </div>
+      {invoices.length > 0 ? (
       <table>
         <thead>
           <tr>
@@ -334,7 +335,7 @@ export default function Table() {
             ))}
           </tr>
         </thead>
-        {invoices.length > 0 ? (
+        
           <tbody>
             {invoices.map((invoice) => (
               <tr key={invoice.id}>
@@ -391,14 +392,22 @@ export default function Table() {
               </tr>
             ))}
           </tbody>
+          </table>
         ) : (
-          <tbody>
+          <table>
+            <thead>
+            <tr>
+              <th>NULL</th>
+            </tr>
+          </thead>
+
+            <tbody>
             <tr> 
               <td className="defaultNoData">No invoices available.</td>
               </tr>
           </tbody>
+          </table>
         )}
-      </table>
       {selectedInvoice ? (
         <EditModal
           isOpen={isModalOpen}
