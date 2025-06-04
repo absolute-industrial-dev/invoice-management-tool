@@ -59,8 +59,7 @@ export default function EditModal({
     e.preventDefault();
     setisLoading(true);
 
-    const success = 
-    onSave(formState);
+    const success = onSave(formState);
     toast.success("Saved Successfully!");
   };
 
@@ -318,7 +317,6 @@ export default function EditModal({
                 name="wo_ewt"
                 value={formState.wo_ewt || ""}
                 onChange={handleChange}
-                disabled="true"
                 aria-required="true"
                 aria-label="Without EWT"
               />
@@ -332,6 +330,7 @@ export default function EditModal({
                 name="ewt"
                 value={formState.ewt || ""}
                 onChange={handleChange}
+                disabled="true"
                 aria-label="EWT"
               />
             </label>
@@ -344,7 +343,23 @@ export default function EditModal({
                 name="counterchecking_ewt"
                 value={formState.counterchecking_ewt || ""}
                 onChange={handleChange}
+                disabled="true"
                 aria-label="Counterchecking EWT"
+              />
+            </label>
+
+            <label htmlFor="given_amount">
+              Given Amount:
+              <input
+                id="given_amount"
+                type="text"
+                name="given_amount"
+                value={formState.given_amount || ""}
+                onChange={handleChange}
+                disabled="true"
+                aria-required="true"
+                aria-label="Given Amount"
+                required
               />
             </label>
 
