@@ -176,95 +176,103 @@ export default function Table() {
             setSearchBy={setSearchBy}
             className="searchby"
           />
-          <button aria-label="Add Invoice" onClick={() => setIsModalOpen(true)}>
-            {" "}
-            <PlusIcon className="icon" />
-          </button>
-          <button
-            onClick={() => handleColumnOrder(searchBy)}
-            className="sortBy-container"
-          >
-            {" "}
-            Sort By:{" "}
-            {columnOrder ? (
-              <ArrowUpIcon className="icon" />
-            ) : (
-              <ArrowDownIcon className="icon" />
-            )}
-          </button>
-        </div>
-        <div className="export-dropdown-container" ref={dropdownRef}>
-          <div className="export-dropdown">
+          <div className="addInvoice-container">
             <button
-              className="export-main-button"
-              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Add Invoice"
+              onClick={() => setIsModalOpen(true)}
             >
-              <span>Export</span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={`dropdown-arrow ${isOpen ? "open" : ""}`}
-              >
-                <path d="M6 9l6 6 6-6" />
-              </svg>
+              {" "}
+              <PlusIcon className="icon" />
             </button>
-
-            {isOpen && (
-              <div className="export-dropdown-content">
-                <div
-                  className="dropdown-option"
-                  onClick={(e) => e.stopPropagation()}
-                  onMouseEnter={() => setShowStatusFilter(true)}
-                  onMouseLeave={() => {
-                    const timeout = setTimeout(
-                      () => setShowStatusFilter(false),
-                      300
-                    );
-                    setCloseDropdownTimeout(timeout);
-                  }}
-                >
-                  <FilterByStatus
-                    onBlur={() => setIsOpen(false)}
-                    status={status}
-                    setStatus={setStatus}
-                  />
-                </div>
-
-                <div
-                  className="dropdown-option"
-                  onClick={(e) => e.stopPropagation()}
-                  onMouseEnter={() => setShowDateFilter(true)}
-                  onMouseLeave={() => {
-                    const timeout = setTimeout(
-                      () => setShowDateFilter(false),
-                      300
-                    );
-                    setCloseDropdownTimeout(timeout);
-                  }}
-                >
-                  <FilterByDate
-                    onBlur={() => setIsOpen(false)}
-                    startDate={startDate}
-                    endDate={endDate}
-                    setStartDate={setStartDate}
-                    setEndDate={setEndDate}
-                  />
-                </div>
-              </div>
-            )}
           </div>
+          <div className="sortBy-container">
+            <button
+              onClick={() => handleColumnOrder(searchBy)}
+              className="sortBy-container"
+            >
+              {" "}
+              Sort By:{" "}
+              {columnOrder ? (
+                <ArrowUpIcon className="icon" />
+              ) : (
+                <ArrowDownIcon className="icon" />
+              )}
+            </button>
+          </div>
+          <div className="export-dropdown-container" ref={dropdownRef}>
+            <div className="export-dropdown">
+              <button
+                className="export-main-button"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <span>Export</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`dropdown-arrow ${isOpen ? "open" : ""}`}
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+
+              {isOpen && (
+                <div className="export-dropdown-content">
+                  <div
+                    className="dropdown-option"
+                    onClick={(e) => e.stopPropagation()}
+                    onMouseEnter={() => setShowStatusFilter(true)}
+                    onMouseLeave={() => {
+                      const timeout = setTimeout(
+                        () => setShowStatusFilter(false),
+                        300
+                      );
+                      setCloseDropdownTimeout(timeout);
+                    }}
+                  >
+                    <FilterByStatus
+                      onBlur={() => setIsOpen(false)}
+                      status={status}
+                      setStatus={setStatus}
+                    />
+                  </div>
+
+                  <div
+                    className="dropdown-option"
+                    onClick={(e) => e.stopPropagation()}
+                    onMouseEnter={() => setShowDateFilter(true)}
+                    onMouseLeave={() => {
+                      const timeout = setTimeout(
+                        () => setShowDateFilter(false),
+                        300
+                      );
+                      setCloseDropdownTimeout(timeout);
+                    }}
+                  >
+                    <FilterByDate
+                      onBlur={() => setIsOpen(false)}
+                      startDate={startDate}
+                      endDate={endDate}
+                      setStartDate={setStartDate}
+                      setEndDate={setEndDate}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          <ExportToExcel
+            status={status}
+            startDate={startDate}
+            endDate={endDate}
+          />
         </div>
-        <ExportToExcel
-          status={status}
-          startDate={startDate}
-          endDate={endDate}
-        />
+
         <div className="pagination">
           <button
             onClick={previousPage}
