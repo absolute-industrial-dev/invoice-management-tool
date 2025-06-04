@@ -6,8 +6,8 @@ export async function fetchInvoices(
   searchBy,
   columnOrder = true
 ) {
-  const from = (currentPage - 1) * 5;
-  const to = from + 5;
+  const from = (currentPage - 1) * 10;
+  const to = from + 10;
   const column = searchBy.toLowerCase().split(" ").join("_");
 
   let query = supabase.from("invoices").select("*");
@@ -41,10 +41,10 @@ export async function fetchInvoices(
     return { data: [], hasMore: false };
   }
 
-  const hasMore = data.length > 5;
+  const hasMore = data.length > 10;
 
   return {
-    data: data.slice(0, 5),
+    data: data.slice(0, 10),
     hasMore,
   };
 }
