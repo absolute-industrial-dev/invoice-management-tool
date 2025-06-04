@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Searchbar from "../searchbar/Searchbar";
 import Searchby from "../searchby/Searchby";
 import "./Table.css";
@@ -27,6 +27,11 @@ export default function Table() {
   const [status, setStatus] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [showStatusFilter, setShowStatusFilter] = useState(false);
+  const [showDateFilter, setShowDateFilter] = useState(false);
+  const [closeDropdownTimeout, setCloseDropdownTimeout] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const headers = [
     "PO Number",
@@ -59,6 +64,13 @@ export default function Table() {
   useEffect(() => {
     setCurrentPage(1);
   }, [searchQuery, searchBy]);
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const loadInvoices = async () => {
     const result = await fetchInvoices(
@@ -137,6 +149,12 @@ export default function Table() {
     loadInvoices();
   };
 
+  const handleClickOutside = (e) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <div className="main-container">
       <div className="contain">
@@ -160,19 +178,79 @@ export default function Table() {
             {" "}
             Sort By: {columnOrder ? "Asc" : "Desc"}
           </button>
-          <FilterByStatus status={status} setStatus={setStatus} />
-          <FilterByDate
-            startDate={startDate}
-            endDate={endDate}
-            setStartDate={setStartDate}
-            setEndDate={setEndDate}
-          />
-          <ExportToExcel
-            status={status}
-            startDate={startDate}
-            endDate={endDate}
-          />
+          <div className="export-dropdown-container" ref={dropdownRef}>
+            <div className="export-dropdown">
+              <button
+                className="export-main-button"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <span>Export</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`dropdown-arrow ${isOpen ? "open" : ""}`}
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+
+              {isOpen && (
+                <div className="export-dropdown-content">
+                  <div
+                    className="dropdown-option"
+                    onClick={(e) => e.stopPropagation()}
+                    onMouseEnter={() => setShowStatusFilter(true)}
+                    onMouseLeave={() => {
+                      const timeout = setTimeout(
+                        () => setShowStatusFilter(false),
+                        300
+                      );
+                      setCloseDropdownTimeout(timeout);
+                    }}
+                  >
+                    <FilterByStatus
+                      onBlur={() => setIsOpen(false)}
+                      status={status}
+                      setStatus={setStatus}
+                    />
+                  </div>
+
+                  <div
+                    className="dropdown-option"
+                    onClick={(e) => e.stopPropagation()}
+                    onMouseEnter={() => setShowDateFilter(true)}
+                    onMouseLeave={() => {
+                      const timeout = setTimeout(
+                        () => setShowDateFilter(false),
+                        300
+                      );
+                      setCloseDropdownTimeout(timeout);
+                    }}
+                  >
+                    <FilterByDate
+                      onBlur={() => setIsOpen(false)}
+                      startDate={startDate}
+                      endDate={endDate}
+                      setStartDate={setStartDate}
+                      setEndDate={setEndDate}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
+        <ExportToExcel
+          status={status}
+          startDate={startDate}
+          endDate={endDate}
+        />
         <div className="pagination">
           <button
             onClick={previousPage}

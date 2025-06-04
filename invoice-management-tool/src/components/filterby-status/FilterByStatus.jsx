@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./FilterByStatus.css";
 
 export default function FilterByStatus({ status, setStatus }) {
-  const [selectedStatus, SetSelectedStatus] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
 
   const statuses = ["Sales Log", "Collectibles", "Last File"];
 
+  useEffect(() => {
+    setSelectedStatus("Sales Log");
+    setStatus("Sales Log");
+  }, [setStatus]);
+
   const handleChange = (status) => {
-    SetSelectedStatus(status);
+    setSelectedStatus(status);
     setStatus(status);
   };
 
