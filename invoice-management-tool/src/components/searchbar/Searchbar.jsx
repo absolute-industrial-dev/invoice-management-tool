@@ -20,15 +20,18 @@ export default function Searchbar({
   });
 
   return (
-    <div className={`searchbar ${className}`}>
-      <ParticleBackground />
-      <MagnifyingGlassIcon className="search-icon" />
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+    <div className="searchbar-container">
+      <div className={`searchbar ${className}`}>
+        <ParticleBackground />
+        <MagnifyingGlassIcon className="search-icon" />
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          className="input-container"
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
     </div>
   );
 }
