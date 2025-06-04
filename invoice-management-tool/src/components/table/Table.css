@@ -2,24 +2,33 @@
   margin: 3em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .contain {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  width: auto;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1em;
+  box-sizing: border-box;
 }
 
 .left-side {
   display: flex;
   align-items: center;
-  margin-left: auto;
+  justify-content: center;
+  margin-left: 100%;
+  flex-wrap: wrap;
+  margin: 0 1rem;
 }
 
 .pagination{
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .pagination button{
@@ -31,11 +40,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1em;
   width: auto;
   align-items: center;
-  margin-right: auto;
 }
 
 .searchb {
@@ -44,14 +53,11 @@
 
 .searchby {
   display: flex;
-  margin-right: auto;
 }
 
 .searchby select {
   display: flex;
   padding: 14px 14px !important;
-  margin-right: auto;
-
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='%23000000' d='M0 0l5 6 5-6z'/></svg>");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
