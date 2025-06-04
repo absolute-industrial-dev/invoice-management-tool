@@ -100,6 +100,7 @@
 
 .dropdown-arrow {
   transition: transform 0.2s ease;
+  margin-left: 0.5rem;
 }
 
 .dropdown-arrow.open {
