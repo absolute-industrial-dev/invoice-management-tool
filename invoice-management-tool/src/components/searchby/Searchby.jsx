@@ -1,3 +1,4 @@
+import { AdjustmentsHorizontalIcon, FunnelIcon } from "@heroicons/react/24/solid";
 import "./Searchby.css";
 
 export default function Searchby({
@@ -25,6 +26,7 @@ export default function Searchby({
             </option>
           ))}
         </select>
+        <AdjustmentsHorizontalIcon className="select-icon"/>
       </div>
     </div>
   );
