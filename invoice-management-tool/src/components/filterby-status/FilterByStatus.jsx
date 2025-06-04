@@ -22,7 +22,6 @@ export default function FilterByStatus({ status, setStatus }) {
         value={selectedStatus}
         onChange={(e) => handleChange(e.target.value)}
       >
-        <option value="">Select a status</option>
         {statuses.map((status) => (
           <option key={status} value={status}>
             {status}

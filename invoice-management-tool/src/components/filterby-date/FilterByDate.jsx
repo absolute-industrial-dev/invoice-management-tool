@@ -49,7 +49,6 @@ export default function FilterByMonth({
         value={selectedMonth}
         onChange={(e) => handleChange(e.target.value)}
       >
-        <option value="">Select a month</option>
         {months.map((month) => (
           <option key={month.value} value={month.value}>
             {month.label}
