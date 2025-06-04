@@ -13,6 +13,7 @@ import ExportToExcel from "../export-to-excel/ExportToExcel";
 import AddModal from "../addmodal/AddModal";
 import FilterByDate from "../filterby-date/FilterByDate";
 import FilterByStatus from "../filterby-status/FilterByStatus";
+import { ArrowDownIcon, ArrowsUpDownIcon, ArrowUpIcon, PlusIcon } from "@heroicons/react/24/solid";
 
 export default function Table() {
   const [invoices, setInvoices] = useState([]);
@@ -152,13 +153,13 @@ export default function Table() {
             setSearchBy={setSearchBy}
             className="searchby"
           />
-          <button onClick={() => setIsModalOpen(true)}>Add Invoice</button>
+          <button aria-label="Add Invoice" onClick={() => setIsModalOpen(true)}> <PlusIcon className="icon"/></button>
           <button
             onClick={() => handleColumnOrder(searchBy)}
             className="sortBy-container"
           >
             {" "}
-            Sort By: {columnOrder ? "Asc" : "Desc"}
+            Sort By: {columnOrder ? <ArrowUpIcon className="icon"/> : <ArrowDownIcon className="icon"/>}
           </button>
           <FilterByStatus status={status} setStatus={setStatus} />
           <FilterByDate
