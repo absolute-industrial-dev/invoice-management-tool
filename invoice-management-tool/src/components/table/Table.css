@@ -82,6 +82,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  left: 60px;
 }
 
 .export-dropdown {
@@ -91,10 +92,10 @@
 .export-main-button {
   display: flex;
   align-items: center;
-  background-color: #4a6cf7;
-  color: white;
   cursor: pointer;
   transition: all 0.2s ease;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .dropdown-arrow {
