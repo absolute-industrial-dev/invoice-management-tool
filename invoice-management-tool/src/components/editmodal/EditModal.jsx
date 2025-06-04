@@ -16,7 +16,7 @@ export default function EditModal({
   const firstInputRef = useRef(null);
   const [isLoading, setisLoading] = useState(false);
 
-  const form2307 = ["Without 2307", "With 2307", "On Hold"];
+  const form2307 = ["Without 2307", "With 2307", "Did not Withhold"];
 
   useEffect(() => {
     if (invoiceData) {
@@ -308,18 +308,6 @@ export default function EditModal({
                   aria-label="Is Service"
                 />
               </div>
-            </label>
-
-            <label htmlFor="wo_ewt">
-              Without EWT
-              <input
-                type="text"
-                name="wo_ewt"
-                value={formState.wo_ewt || ""}
-                onChange={handleChange}
-                aria-required="true"
-                aria-label="Without EWT"
-              />
             </label>
 
             <label htmlFor="ewt">
