@@ -233,6 +233,18 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
               />
             </label>
 
+            <label htmlFor="agent">
+              Agent Name
+              <input
+                id="agent"
+                type="text"
+                name="agent"
+                value={formState.agent || ""}
+                onChange={handleChange}
+                aria-label="Agent Name"
+              />
+            </label>
+
             <div className="form-buttons">
               <button type="submit" className="sub-btn">
                 {isLoading ? <Loading /> : <>Save</>}
