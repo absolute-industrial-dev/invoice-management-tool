@@ -34,9 +34,6 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
     const { name, value } = e.target;
 
     const numericFields = [
-      "po_number",
-      "si_number",
-      "dr_number",
       "net_amount",
       "gross_amount",
     ];

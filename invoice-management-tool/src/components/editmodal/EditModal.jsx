@@ -43,14 +43,7 @@ export default function EditModal({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const numericField = [
-      "po_number",
-      "si_number",
-      "dr_number",
-      "tin_number",
-      "net_amount",
-      "gross_amount",
-    ];
+    const numericField = ["net_amount", "gross_amount"];
 
     if (numericField.includes(name)) {
       const isValid = /^\d*\.?\d*$/.test(value);
