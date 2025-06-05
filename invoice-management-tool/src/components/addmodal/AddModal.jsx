@@ -56,15 +56,17 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
     e.preventDefault();
     setisLoading(true);
     try {
-      const success = await addNewInvoice(formState);
-      if (success) {
+      const response = await addNewInvoice(formState);
+      if (response.success) {
         reloadInvoices();
         setisLoading(false);
         onClose();
-        toast.success("Saved successfully!");
+        toast.success(response.message);
+      } else {
+        throw response;
       }
-    } catch (err) {
-      toast.error("Failed to save.");
+    } catch (error) {
+      toast.error(`Failed to save: ${error.message}`);
     } finally {
       setisLoading(false);
     }
