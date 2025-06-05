@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import "./Login.css";
@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import ThemeToggle from "../../components/themetoggle/Theme";
 import ParticleBackground from "../../components/particles/Particles";
 import { EnvelopeIcon, LockClosedIcon } from "@heroicons/react/24/solid";
+import toast from "react-hot-toast";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -16,18 +17,33 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    
+    // Basic validation
+    if (!email || !password) {
+      toast.error("Please enter both email and password");
+      return;
+    }
+
+    const toastId = toast.loading("Logging in...");
+    
     try {
-      await login(email, password);
-      navigate("/main");
+      const success = await login(email, password);
+      if (success) {
+        toast.success("Login successful!", { id: toastId });
+        navigate("/main");
+      } else {
+        toast.error("Invalid credentials", { id: toastId });
+      }
     } catch (err) {
-      console.error("Login failed:", err.message || err);
+      console.error("Login failed:", err);
+      toast.error(err.message || "Login failed. Please try again.", {
+        id: toastId,
+      });
     }
   };
 
   return (
     <main className="container">
-      {/* Logo animation: center fade-in, then move to top */}
-      
       <ThemeToggle className="theme-login"/>
       <motion.img
         src={aisiLogo}
@@ -36,13 +52,11 @@ export default function Login() {
         initial={{ opacity: 0, y: 200 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
-          opacity: { duration: 1 },              // Fade in first (1s)
-          y: { delay: 1, duration: 0.5, ease: "easeIn" } // Then slide up (after 1s) with ease-in
+          opacity: { duration: 1 },
+          y: { delay: 1, duration: 0.5, ease: "easeIn" }
         }}
       />
 
-
-      {/* Form animation: fade in and slide up */}
       <motion.form
         onSubmit={handleLogin}
         initial={{ opacity: 0, y: 30 }}
@@ -54,8 +68,10 @@ export default function Login() {
           <div className="fields">
             <label htmlFor="email"><EnvelopeIcon className="icon" />Email:</label>
             <input
-              type="text"
+              type="email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
 
@@ -63,7 +79,9 @@ export default function Login() {
             <label htmlFor="password"><LockClosedIcon className="icon"/>Password:</label>
             <input
               type="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
 
