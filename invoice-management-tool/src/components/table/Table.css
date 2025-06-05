@@ -25,13 +25,13 @@
   margin: 0 1rem;
 }
 
-.pagination{
+.pagination {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.pagination button{
+.pagination button {
   display: flex;
   margin: 0px 10px !important;
 }
@@ -53,6 +53,9 @@
 
 .searchby {
   display: flex;
+  max-width: 100%;
+  min-width: 150px;
+  white-space: nowrap;
 }
 
 .searchby select {
