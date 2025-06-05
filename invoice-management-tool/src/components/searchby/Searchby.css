@@ -1,5 +1,6 @@
 .searchbycontainertest select {
   display: flex;
+  width: 90%;
 }
 
 select {
