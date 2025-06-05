@@ -96,10 +96,25 @@ export async function addNewInvoice(formStateData) {
 
   if (error) {
     console.error("Error updating new invoice: ", error);
-    return false;
+
+    if (error.code === "23505") {
+      return {
+        message: "Sales Invoice Number already exists.",
+        success: false,
+        error,
+      };
+    }
+    return {
+      message: "Error while saving invoice.",
+      success: false,
+      error,
+    };
   }
 
-  return true;
+  return {
+    message: "Invoice added successfully!",
+    success: true,
+  };
 }
 
 export async function fetchExcelInvoices(status, startDate, endDate) {
@@ -109,13 +124,22 @@ export async function fetchExcelInvoices(status, startDate, endDate) {
     const invoices = [];
 
     while (true) {
-      const { data, error } = await supabase
+      let query = supabase
         .from("invoices")
         .select("*")
         .eq("status", status)
         .gte("invoice_date", startDate)
-        .lte("invoice_date", endDate)
-        .range(offset, offset + limit - 1);
+        .lte("invoice_date", endDate);
+
+      if (status === "Collectibles") {
+        query = query.order("company_name", { ascending: true });
+      } else if (status === "Last File") {
+        query = query.order("date_collected", { ascending: true });
+      } else {
+        query = query.order("si_number", { ascending: true });
+      }
+
+      const { data, error } = await query.range(offset, offset + limit - 1);
 
       if (error) throw error;
 
