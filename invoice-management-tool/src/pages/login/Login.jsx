@@ -18,7 +18,6 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     
-    // Basic validation
     if (!email || !password) {
       toast.error("Please enter both email and password");
       return;
