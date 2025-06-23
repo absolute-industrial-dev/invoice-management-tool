@@ -107,7 +107,6 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
                 ref={firstInputRef}
                 aria-required="true"
                 aria-label="Purchase Order Number"
-                required
               />
             </label>
 
@@ -121,7 +120,6 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Sales Invoice Number"
-                required
               />
             </label>
 
@@ -135,7 +133,6 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Debit Number"
-                required
               />
             </label>
 
@@ -149,7 +146,6 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Tax Identification Number"
-                required
               />
             </label>
 
@@ -175,7 +171,6 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Company Name"
-                required
               />
             </label>
 
@@ -189,7 +184,6 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Invoice Date"
-                required
               />
             </label>
 
@@ -203,7 +197,6 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Gross Amount"
-                required
               />
             </label>
 
@@ -217,7 +210,6 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Net Amount"
-                required
               />
             </label>
 
