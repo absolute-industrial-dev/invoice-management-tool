@@ -33,10 +33,7 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    const numericFields = [
-      "net_amount",
-      "gross_amount",
-    ];
+    const numericFields = ["net_amount", "gross_amount"];
 
     if (numericFields.includes(name)) {
       const isValid = /^\d*\.?\d*$/.test(value);
@@ -113,6 +110,7 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
             <label htmlFor="si_number">
               SI Number:
               <input
+                required
                 id="si_number"
                 type="text"
                 name="si_number"
@@ -164,6 +162,7 @@ export default function AddModal({ isOpen, onClose, reloadInvoices }) {
             <label htmlFor="company_name">
               Company Name:
               <input
+                required
                 id="company_name"
                 type="text"
                 name="company_name"
