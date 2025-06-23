@@ -135,7 +135,6 @@ export default function EditModal({
                 ref={firstInputRef}
                 aria-required="true"
                 aria-label="Purchase Order Number"
-                required
               />
             </label>
 
@@ -149,7 +148,6 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Sales Invoice Number"
-                required
               />
             </label>
 
@@ -163,7 +161,6 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Debit Number"
-                required
               />
             </label>
 
@@ -190,7 +187,6 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Gross Amount"
-                required
               />
             </label>
 
@@ -204,7 +200,6 @@ export default function EditModal({
                 onChange={handleChange}
                 aria-required="true"
                 aria-label="Net Amount"
-                required
               />
             </label>
 
