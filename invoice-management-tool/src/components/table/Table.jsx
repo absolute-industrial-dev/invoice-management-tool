@@ -348,19 +348,19 @@ export default function Table() {
           <tbody>
             {invoices.map((invoice) => (
               <tr key={invoice.id}>
-                <td>{invoice.po_number}</td>
-                <td>{invoice.si_number}</td>
-                <td>{invoice.dr_number}</td>
-                <td>{invoice.net_amount}</td>
-                <td>{invoice.gross_amount}</td>
+                <td>{invoice.po_number || '-'}</td>
+                <td>{invoice.si_number || '-'}</td>
+                <td>{invoice.dr_number || '-'}</td>
+                <td>{invoice.net_amount || '-'}</td>
+                <td>{invoice.gross_amount || '-'}</td>
                 <td>
-                  {new Date(invoice.invoice_date)
+                  {invoice.invoice_date && new Date(invoice.invoice_date)
                     .toLocaleDateString("en-GB", {
                       day: "2-digit",
                       month: "short",
                       year: "2-digit",
                     })
-                    .replace(/\s/g, "-")}
+                    .replace(/\s/g, "-") || '-'}
                 </td>
                 <td>{invoice.company_name}</td>
                 <td>{invoice.description}</td>
