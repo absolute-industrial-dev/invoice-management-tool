@@ -317,12 +317,12 @@ button[type="submit"]:hover {
   box-shadow: inset 5px 5px 10px #2b6b15, inset -5px -5px 10px #77e054;
 }
 
-button[type="cancel"], .logout-button{
+button[type="cancel"], .logout-button, .delete{
   background-color: #af3030;
   color: #fafafa;
 }
 
-button[type="cancel"]:hover, .logout-button:hover {
+button[type="cancel"]:hover, .logout-button:hover, .delete:hover {
   background: #c73232;
   box-shadow: inset 5px 5px 10px #641919, inset -5px -5px 10px #ff4b4b;
 }
@@ -338,7 +338,7 @@ html.dark button[type="submit"]:hover {
   box-shadow: inset 5px 5px 10px #1c4e10, inset -5px -5px 10px #4dde28;
 }
 
-html.dark button[type="cancel"] {
+html.dark button[type="cancel"], html.dark .delete {
   background-color: #8c2a2a;
   color: #fafafa;
   box-shadow: 12px 12px 24px #0f0f0f, -12px -12px 24px #292929;
@@ -351,7 +351,7 @@ html.dark .logout-button{
              -5px -5px 10px #66b74c;
 }
 
-html.dark button[type="cancel"]:hover, html.dark .logout-button:hover {
+html.dark button[type="cancel"]:hover, html.dark .logout-button:hover, html.dark .delete:hover {
   background: #a82e2e;
   box-shadow: inset 5px 5px 10px #531919, inset -5px -5px 10px #e24c4c;
 }

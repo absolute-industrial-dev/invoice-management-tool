@@ -37,12 +37,14 @@ export default function DeleteModal({
     >
       <div className="modal-container">
         <span>
-          This will delete all existing records for this invoice. Are you sure
-          you want to delete?
+          This will delete all existing records for this invoice.
+        </span>
+        <span>
+          Are you sure you want to delete?
         </span>
 
         <div className="modal-buttons">
-          <button onClick={handleDelete}>Delete</button>
+          <button className="delete" onClick={handleDelete}>Delete</button>
           <button onClick={handleClose}>Cancel</button>
         </div>
       </div>

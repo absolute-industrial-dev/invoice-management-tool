@@ -1,8 +1,9 @@
 .modal-container {
   background: #eeeeee;
   border-radius: 20px;
-  width: 90%;
-  max-height: 90vh;
+  width: 30%;
+  height: fit-content;
+  padding: 25px;
   overflow: hidden; /* Keeps the radius intact */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -10,11 +11,16 @@
 }
 
 .modal-buttons {
-    flex: auto;
-    gap: 10px;
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.delete-button {
-    background-color: red;
+.modal-container span {
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-container span:first-of-type{
+  margin-top: 20px;
 }
