@@ -19,10 +19,12 @@ import {
   ArrowUpIcon,
   PlusIcon,
 } from "@heroicons/react/24/solid";
+import DeleteModal from "../deletemodal/DeleteModal";
 
 export default function Table() {
   const [invoices, setInvoices] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchBy, setSearchBy] = useState("PO Number");
@@ -153,6 +155,11 @@ export default function Table() {
     }
 
     loadInvoices();
+  };
+
+  const openDeleteModal = async (invoice) => {
+    setSelectedInvoice(invoice);
+    setDeleteModal(true);
   };
 
   const handleClickOutside = (e) => {
@@ -348,19 +355,21 @@ export default function Table() {
           <tbody>
             {invoices.map((invoice) => (
               <tr key={invoice.id}>
-                <td>{invoice.po_number || '-'}</td>
-                <td>{invoice.si_number || '-'}</td>
-                <td>{invoice.dr_number || '-'}</td>
-                <td>{invoice.net_amount || '-'}</td>
-                <td>{invoice.gross_amount || '-'}</td>
+                <td>{invoice.po_number || "-"}</td>
+                <td>{invoice.si_number || "-"}</td>
+                <td>{invoice.dr_number || "-"}</td>
+                <td>{invoice.net_amount || "-"}</td>
+                <td>{invoice.gross_amount || "-"}</td>
                 <td>
-                  {invoice.invoice_date && new Date(invoice.invoice_date)
-                    .toLocaleDateString("en-GB", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "2-digit",
-                    })
-                    .replace(/\s/g, "-") || '-'}
+                  {(invoice.invoice_date &&
+                    new Date(invoice.invoice_date)
+                      .toLocaleDateString("en-GB", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "2-digit",
+                      })
+                      .replace(/\s/g, "-")) ||
+                    "-"}
                 </td>
                 <td>{invoice.company_name}</td>
                 <td>{invoice.description}</td>
@@ -382,6 +391,9 @@ export default function Table() {
                 <td>
                   <div className="actions-container">
                     <button onClick={() => openEditModal(invoice)}>Edit</button>
+                    <button onClick={() => openDeleteModal(invoice)}>
+                      Delete
+                    </button>
                     {invoice.status !== "Sales Log" && (
                       <>
                         <input
@@ -417,6 +429,13 @@ export default function Table() {
           </tbody>
         </table>
       )}
+      <DeleteModal
+        isOpen={deleteModal}
+        setIsOpen={setDeleteModal}
+        invoice={selectedInvoice}
+        setSelectedInvoice={setSelectedInvoice}
+        reloadInvoices={loadInvoices}
+      />
       {selectedInvoice ? (
         <EditModal
           isOpen={isModalOpen}
