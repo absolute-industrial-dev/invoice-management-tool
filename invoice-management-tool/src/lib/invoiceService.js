@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { supabase } from "./supabase";
 
 export async function fetchInvoices(
@@ -169,5 +170,23 @@ export async function monitorDueDate() {
   } catch (error) {
     console.error(error);
     return error;
+  }
+}
+
+export async function deleteInvoice(invoiceId) {
+  try {
+    const { error } = await supabase.rpc("delete_invoice", {
+      inv_id: invoiceId,
+    });
+
+    if (error) throw error;
+
+    return {
+      success: true,
+      message: "Deleted invoice successfully.",
+    };
+  } catch (error) {
+    console.error(error.message);
+    return { success: false, message: error.message };
   }
 }
