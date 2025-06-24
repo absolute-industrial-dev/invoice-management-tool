@@ -4,7 +4,7 @@ import ExcelJS from "exceljs";
 import { saveAs } from "file-saver";
 import { fetchExcelInvoices } from "../../lib/invoiceService";
 
-export default function ExportToExcel({status, startDate, endDate}) {
+export default function ExportToExcel({ status, startDate, endDate }) {
   const convertedStatus = status.toLowerCase().replace(/\s+/g, "");
 
   const date = new Date();
@@ -61,7 +61,8 @@ export default function ExportToExcel({status, startDate, endDate}) {
 }
 
 function salesLog({ data }) {
-  return data.map((item) => ({
+  const filled = fillMissingRecords(data);
+  return filled.map((item) => ({
     "Company Name": item.company_name,
     "PO Number": item.po_number,
     "SI Number": item.si_number,
@@ -119,7 +120,7 @@ function lastFile({ data }) {
     fs: item.field_sales,
     "Form 2307": item.form_2307,
     "Commi Rate": "",
-    "Date Collected":formatDate( item.date_collected),
+    "Date Collected": formatDate(item.date_collected),
     "OR Number": item.or_number,
     "Bank Deposited": item.bank_deposited,
     EWT: item.ewt,
@@ -133,4 +134,39 @@ function formatDate(date) {
     month: "2-digit",
     day: "2-digit",
   });
+}
+
+function fillMissingRecords(data) {
+  const siSet = new Set(
+    data.map((item) => parseInt(item.si_number)).filter(Boolean)
+  );
+  const minSI = Math.min(...siSet);
+  const maxSI = Math.max(...siSet);
+  const roundedMaxSI = Math.ceil(maxSI / 1000) * 1000;
+
+  const filledData = [];
+
+  for (let si = minSI; si <= roundedMaxSI; si++) {
+    if (siSet.has(si)) {
+      const record = data.find((item) => parseInt(item.si_number) === si);
+      filledData.push(record);
+    } else {
+      filledData.push({
+        company_name: "",
+        po_number: "",
+        si_number: si.toString(),
+        dr_number: "",
+        net_amount: "",
+        gross_amount: "",
+        description: "",
+        tin_number: "",
+        address: "",
+        invoice_date: "",
+        due_date: "",
+        agent: "",
+      });
+    }
+  }
+
+  return filledData;
 }
