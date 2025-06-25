@@ -1,4 +1,4 @@
-.modal-container {
+.modal-container-2 {
   background: #eeeeee;
   border-radius: 20px;
   width: 30%;
@@ -10,17 +10,17 @@
   flex-direction: column;
 }
 
-.modal-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modal-buttons-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.modal-container span {
+.modal-container-2 span {
   font-weight: bold;
   text-align: center;
 }
 
-.modal-container span:first-of-type{
+.modal-container-2 span:first-of-type {
   margin-top: 20px;
 }

@@ -29,13 +29,13 @@ export default function DeleteModal({
 
   return (
     <div
-      className="modal-overlay"
+      className="modal-overlay-2"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
       onClick={handleClose}
     >
-      <div className="modal-container">
+      <div className="modal-container-2">
         <span>
           This will delete all existing records for this invoice.
         </span>
@@ -43,7 +43,7 @@ export default function DeleteModal({
           Are you sure you want to delete?
         </span>
 
-        <div className="modal-buttons">
+        <div className="modal-buttons-2">
           <button className="delete" onClick={handleDelete}>Delete</button>
           <button onClick={handleClose}>Cancel</button>
         </div>
