@@ -190,3 +190,22 @@ export async function deleteInvoice(invoiceId) {
     return { success: false, message: error.message };
   }
 }
+
+export async function convertSalesLogs(monthCoverage) {
+  try {
+    const { error } = await supabase.rpc("convert_sales_logs", {month_coverage: monthCoverage});
+
+    if (error) throw error;
+
+    return {
+      success: true,
+      message: "Converted sales logs successfully!",
+    };
+  } catch (error) {
+    console.error(error.message);
+    return {
+      success: false,
+      message: "Error converting sales logs.",
+    };
+  }
+}
