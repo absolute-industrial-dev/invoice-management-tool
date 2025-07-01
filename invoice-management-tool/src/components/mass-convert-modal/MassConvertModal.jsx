@@ -48,7 +48,7 @@ export default function MassConvertModal({ isOpen, setIsOpen }) {
         onClick={(e) => e.stopPropagation()}
         onSubmit={(e) => handleMassConvert(e)}
       >
-        <label>Select invoice dates to convert</label>
+        <h2 id="modal-title">Select Invoice Dates to Convert</h2>
         <div className="date-range-container">
           <input
             required
@@ -56,7 +56,7 @@ export default function MassConvertModal({ isOpen, setIsOpen }) {
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
           ></input>
-          <span> To </span>
+          <label> To </label>
           <input
             required
             type="date"
@@ -67,7 +67,7 @@ export default function MassConvertModal({ isOpen, setIsOpen }) {
 
         <div className="status-range-container">
           <label>From</label>
-          <select onChange={(e) => setInitialStatus(e.target.value)}>
+          <select onChange={(e) => setInitialStatus(e.target.value)} className="select-modal">
             {statuses.map((status) => (
               <option key={status} value={status}>
                 {status}
@@ -76,7 +76,7 @@ export default function MassConvertModal({ isOpen, setIsOpen }) {
           </select>
 
           <label>To</label>
-          <select onChange={(e) => setFinalStatus(e.target.value)}>
+          <select onChange={(e) => setFinalStatus(e.target.value)} className="select-modal">
             {statuses
               .filter((status) => status !== initialStatus)
               .map((status) => (
@@ -91,7 +91,7 @@ export default function MassConvertModal({ isOpen, setIsOpen }) {
           <button type="submit" disabled={isLoading}>
             Convert
           </button>
-          <button type="button" disabled={isLoading}>
+          <button type="cancel" onClick={handleClose} disabled={isLoading}>
             Cancel
           </button>
         </div>

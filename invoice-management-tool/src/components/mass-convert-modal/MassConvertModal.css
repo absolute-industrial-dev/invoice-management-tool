@@ -1,7 +1,7 @@
 .massconvert-modal-container {
   background: #eeeeee;
   border-radius: 20px;
-  width: 30%;
+  width: 35%;
   height: fit-content;
   padding: 25px;
   overflow: hidden; /* Keeps the radius intact */
@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  color: #101010;
 }
 
 .massconvert-modal-buttons {
@@ -33,14 +34,24 @@ html.dark .massconvert-modal-container {
   color: #f0f0f0;
 }
 
-.date-range-container {
+.date-range-container, .status-range-container  {
     display: flex;
-    gap: 50px;
+    align-items: center;
     justify-content: center;
+    gap: 1rem;
+    margin-bottom: 20px;
 }
 
-.status-range-container {
-    display: flex;
-    gap: 50px;
+label {
+  align-items: center;
+  font-weight: bold;
+  color: #101010;
 }
 
+html.dark label{
+  color: #ccc;
+}
+
+.select-modal{
+  padding: 14px 30px !important;
+}
