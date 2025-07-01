@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import "./FilterByDate.css";
 
 export default function FilterByMonth({
+  selectedMonth,
+  setSelectedMonth,
   startDate,
   endDate,
   setStartDate,
   setEndDate,
 }) {
-  const [selectedMonth, setSelectedMonth] = useState("");
 
   const months = [
     { label: "January", value: "01" },
@@ -24,13 +25,13 @@ export default function FilterByMonth({
     { label: "December", value: "12" },
   ];
 
-  useEffect(() => {
+ /*  useEffect(() => {
     const currentDate = new Date();
     const currentMonth = (currentDate.getMonth() + 1)
       .toString()
       .padStart(2, "0");
     handleChange(currentMonth);
-  }, []);
+  }, []); */
 
   const handleChange = (monthValue) => {
     const year = new Date().getFullYear();
