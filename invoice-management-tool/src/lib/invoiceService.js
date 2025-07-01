@@ -191,21 +191,24 @@ export async function deleteInvoice(invoiceId) {
   }
 }
 
-export async function convertSalesLogs(monthCoverage) {
+export async function massConvert(
+  startDate,
+  endDate,
+  initialStatus,
+  finalStatus
+) {
   try {
-    const { error } = await supabase.rpc("convert_sales_logs", {month_coverage: monthCoverage});
+    const {data, error } = await supabase.rpc("mass_convert", {
+      start_date: startDate,
+      end_date: endDate,
+      initial_status: initialStatus,
+      final_status: finalStatus,
+    });
 
     if (error) throw error;
 
-    return {
-      success: true,
-      message: "Converted sales logs successfully!",
-    };
+    return { success: true, count: data};
   } catch (error) {
-    console.error(error.message);
-    return {
-      success: false,
-      message: "Error converting sales logs.",
-    };
+    return { success: false, error: error.message };
   }
 }
