@@ -40,6 +40,7 @@ export default function Table() {
   const [closeDropdownTimeout, setCloseDropdownTimeout] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [selectedMonth, setSelectedMonth] = useState("");
 
   const headers = [
     "PO Number",
@@ -268,6 +269,8 @@ export default function Table() {
                   >
                     <FilterByDate
                       onBlur={() => setIsOpen(false)}
+                      selectedMonth={selectedMonth}
+                      setSelectedMonth={setSelectedMonth}
                       startDate={startDate}
                       endDate={endDate}
                       setStartDate={setStartDate}
