@@ -46,7 +46,6 @@ select {
 }
 
 .modal-container {
-  background: #eeeeee;
   border-radius: 20px;
   width: 90%;
   max-height: 90vh;

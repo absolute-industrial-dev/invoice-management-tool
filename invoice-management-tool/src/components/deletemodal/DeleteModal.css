@@ -1,4 +1,4 @@
-.modal-container-2 {
+.delete-modal-container {
   background: #eeeeee;
   border-radius: 20px;
   width: 30%;
@@ -10,17 +10,23 @@
   flex-direction: column;
 }
 
-.modal-buttons-2 {
+.delete-modal-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modal-container-2 span {
+.delete-modal-container span {
   font-weight: bold;
   text-align: center;
 }
 
-.modal-container-2 span:first-of-type {
+.delete-modal-container span:first-of-type {
   margin-top: 20px;
+}
+
+html.dark .delete-modal-container {
+  background: #1e1e1e;
+  box-shadow: none;
+  color: #f0f0f0;
 }
