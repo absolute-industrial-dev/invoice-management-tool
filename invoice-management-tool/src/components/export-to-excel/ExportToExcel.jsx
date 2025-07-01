@@ -7,12 +7,14 @@ import { fetchExcelInvoices } from "../../lib/invoiceService";
 export default function ExportToExcel({ status, startDate, endDate }) {
   const convertedStatus = status.toLowerCase().replace(/\s+/g, "");
 
-  const date = new Date();
-  const formattedDate = date.toLocaleString("en-US", {
-    month: "long",
+  const options = {
     year: "numeric",
-  });
-  const filename = `${status} - ${formattedDate}`;
+    month: "long",
+  };
+
+  const formattedMonth = new Date(startDate).toLocaleDateString('en-US', options); // "June 2025"
+
+  const filename = `${status} - ${formattedMonth}`;
 
   // Function to export to excel
   const exportToExcel = async () => {
