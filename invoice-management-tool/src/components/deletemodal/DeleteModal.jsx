@@ -35,7 +35,7 @@ export default function DeleteModal({
       aria-labelledby="delete-modal-title"
       onClick={handleClose}
     >
-      <div className="delete-modal-container">
+      <div className="delete-modal-container" onClick={(e) => e.stopPropagation()}>
         <span>This will delete all existing records for this invoice.</span>
         <span>Are you sure you want to delete?</span>
 
