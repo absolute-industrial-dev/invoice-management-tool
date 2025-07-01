@@ -20,6 +20,7 @@ import {
   PlusIcon,
 } from "@heroicons/react/24/solid";
 import DeleteModal from "../deletemodal/DeleteModal";
+import MassConvertModal from "../mass-convert-modal/MassConvertModal";
 
 export default function Table() {
   const [invoices, setInvoices] = useState([]);
@@ -41,6 +42,7 @@ export default function Table() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [selectedMonth, setSelectedMonth] = useState("");
+  const [massConvertModal, setMassConvertModal] = useState(false);
 
   const headers = [
     "PO Number",
@@ -107,6 +109,10 @@ export default function Table() {
     setSelectedInvoice(invoice);
     setIsModalOpen(true);
   };
+
+  const openMassConvertModal = () => {
+    setMassConvertModal(true);
+  }
 
   const handleCloseModal = () => {
     setSelectedInvoice(null);
@@ -210,6 +216,7 @@ export default function Table() {
             </button>
           </div>
         </div>
+        <button onClick={openMassConvertModal}>Mass Convert</button>
 
         <div className="left-side">
           <div className="export-dropdown-container" ref={dropdownRef}>
@@ -432,6 +439,7 @@ export default function Table() {
           </tbody>
         </table>
       )}
+      <MassConvertModal isOpen={massConvertModal} setIsOpen={setMassConvertModal}/>
       <DeleteModal
         isOpen={deleteModal}
         setIsOpen={setDeleteModal}
