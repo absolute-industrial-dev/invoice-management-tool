@@ -10,14 +10,14 @@ import { monitorDueDate } from "./lib/invoiceService";
 export default function App() {
   const { user, loading } = useAuth();
 
-  useEffect(() => {
+  /* useEffect(() => {
     const checkDueDate = async () => {
       await monitorDueDate();
     };
 
     checkDueDate();
   }, []);
-
+ */
   if (loading) return <p>Loading...</p>;
 
   return (
