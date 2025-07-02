@@ -131,11 +131,28 @@ function lastFile({ data }) {
 }
 
 function formatDate(date) {
-  return new Date(date).toLocaleDateString("en-US", {
+
+  if (!date || date === null) {
+    return '';
+  }
+
+   const monthNames = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+
+  const d = new Date(date);
+
+  const month = monthNames[d.getMonth()];
+  const day = String(d.getDate()).padStart(2, '0');
+  const year = d.getFullYear();
+
+  return `${month}-${day}-${year}`;
+ /*  return new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-  });
+  }); */
 }
 
 function fillMissingRecords(data) {
